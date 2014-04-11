@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory
+        android:title="Tutorial">
+        <CheckBoxPreference
+            android:key="tut_enable"
+            android:title="Enable"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+    
+
+</PreferenceScreen>
+<!-- From: file:/D:/Android%20Studio/Workspace/Phylane/app/src/main/res/xml/prefs.xml -->

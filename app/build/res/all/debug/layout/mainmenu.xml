@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    
+    <!-- When adding resources the alignment may change from device to device -->
+    
+    <ImageView
+        android:id="@+id/ivMMBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/mainmenubackground" />
+
+    <ImageView
+        android:id="@+id/ivTitleImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/titleimage" />
+
+    <ImageView
+        android:id="@+id/ivStart"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@id/ivTitleImage"
+        android:layout_alignRight="@id/ivTitleImage"
+        android:layout_below="@+id/ivTitleImage"
+        android:src="@drawable/startbutton" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:id="@+id/ivOption"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/optionbutton" />
+
+        <ImageView
+            android:id="@+id/ivQuit"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/quitbutton" />
+
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/D:/Android%20Studio/Workspace/Phylane/app/src/main/res/layout/mainmenu.xml -->

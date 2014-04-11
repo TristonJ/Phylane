@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="D:\Android Studio\Workspace\Phylane\app\src\main\assets" >
+            <file
+                name="fly_background.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\fly_background.png" />
+            <file
+                name="fly_parallax.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\fly_parallax.png" />
+            <file
+                name="mountain.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\mountain.png" />
+            <file
+                name="testplane.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\testplane.png" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="D:\Android Studio\Workspace\Phylane\app\src\debug\assets" />
+    </dataSet>
+
+</merger>

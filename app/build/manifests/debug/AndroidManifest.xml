@@ -1,0 +1,28 @@
+<!-- From: file:/D:/Android%20Studio/Workspace/Phylane/app/src/main/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.lvadt.phylane">
+
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="18"/>
+
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.Splash" android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.MainMenu" android:screenOrientation="landscape">
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.Prefs" android:screenOrientation="landscape">
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.Tutorial" android:screenOrientation="landscape">
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.HomeScreen" android:screenOrientation="landscape">
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.Store" android:screenOrientation="landscape">
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.Fly" android:screenOrientation="landscape">
+        </activity>
+ 
+    </application>
+
+</manifest>

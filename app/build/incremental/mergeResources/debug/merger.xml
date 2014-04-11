@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="D:\Android Studio\Workspace\Phylane\app\src\main\res" >
+            <file
+                name="backbutton"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\backbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="bubble"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\bubble.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="buybutton"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\buybutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="fly_background"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\fly_background.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="fly_parallax"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\fly_parallax.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="homescreenplane"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\homescreenplane.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="mainmenubackground"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\mainmenubackground.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="missionsbutton"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\missionsbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="mountain"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\mountain.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="nextitem"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\nextitem.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="optionbutton"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\optionbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="previtem"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\previtem.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="quitbutton"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\quitbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="splash"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\splash.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="startbutton"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\startbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="takeoffbutton"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\takeoffbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="takeoff_background"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\takeoff_background.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="takeoff_parallax"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\takeoff_parallax.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="testplane"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\testplane.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="testplaneimage"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\testplaneimage.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="titleimage"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\titleimage.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="splash"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-mdpi\splash.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-xxhdpi\ic_launcher.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="fly"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\fly.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="homescreen"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\homescreen.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="mainmenu"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\mainmenu.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="popup"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\popup.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="splash"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\splash.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="store"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\store.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="splash"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\menu\splash.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values\dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values\strings.xml"
+                qualifiers="" >
+                <string name="action_settings" >Settings
+                </string>
+                <string name="app_name" >Phylane
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+            </file>
+            <file
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values\styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values-sw720dp-land\dimens.xml"
+                qualifiers="sw720dp-land" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values-v11\styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values-v14\styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                name="prefs"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\xml\prefs.xml"
+                qualifiers=""
+                type="xml" />
+        </source>
+        <source path="D:\Android Studio\Workspace\Phylane\app\build\res\rs\debug" />
+        <source path="D:\Android Studio\Workspace\Phylane\app\build\res\generated\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="D:\Android Studio\Workspace\Phylane\app\src\debug\res" />
+    </dataSet>
+
+</merger>
