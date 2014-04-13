@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
+import com.lvadt.phylane.R;
 import com.lvadt.phylane.graphics.GLRenderer;
 import com.lvadt.phylane.model.Level;
 import com.lvadt.phylane.Physics;
@@ -64,8 +65,7 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 		glsurface.setOnTouchListener(this);
 		
 		setContentView(glsurface);
-		
-		//Initialize variables 
+        //Initialize variables
 		init();
 		
 		phyEngine = new Physics();

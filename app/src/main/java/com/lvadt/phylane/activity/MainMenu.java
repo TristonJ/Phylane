@@ -37,9 +37,10 @@ public class MainMenu extends Activity implements OnClickListener{
 				//If the tutorial is enabled, start it, disable the preference
 				getPrefs.edit().putBoolean("tut_enable", false);
 				getPrefs.edit().apply();
-				MainMenu.this.finish();
-				Intent i = new Intent(MainMenu.this, Tutorial.class);
-				startActivity(i);
+                Intent i = new Intent(MainMenu.this, LoadScreen.class);
+                i.putExtra("class", "com.lvadt.phylane.activity.Tutorial");
+                startActivity(i);
+                MainMenu.this.finish();
 			}
 			else{
 				//Later this should directly start the game where the
@@ -59,7 +60,8 @@ public class MainMenu extends Activity implements OnClickListener{
 	}
 
 	public void StartGame(){
-		Intent i = new Intent(MainMenu.this, HomeScreen.class);
-		startActivity(i);
+        Intent i = new Intent(MainMenu.this, LoadScreen.class);
+        i.putExtra("class", "com.lvadt.phylane.activity.HomeScreen");
+        startActivity(i);
 	}
 }

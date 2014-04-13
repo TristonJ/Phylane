@@ -144,6 +144,16 @@
                 qualifiers=""
                 type="layout" />
             <file
+                name="levelcomplete"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\levelcomplete.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="loadscreen"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\loadscreen.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="mainmenu"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\mainmenu.xml"
                 qualifiers=""
@@ -244,15 +254,15 @@
                 qualifiers=""
                 type="xml" />
             <file
-                name="levelcomplete"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\levelcomplete.xml"
-                qualifiers=""
-                type="layout" />
+                name="load_flyerone"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\load_flyerone.png"
+                qualifiers="hdpi"
+                type="drawable" />
             <file
-                name="loadscreen"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\loadscreen.xml"
-                qualifiers=""
-                type="layout" />
+                name="load_lift"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\load_lift.png"
+                qualifiers="hdpi"
+                type="drawable" />
         </source>
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\rs\debug" />
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\generated\debug" />
