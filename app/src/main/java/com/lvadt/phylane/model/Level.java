@@ -38,6 +38,8 @@ public class Level {
 	public String[] filenames;
 	//The position of every object
 	public int[] objX, objY;
+    //The point at which the level is over
+    public int levelFinish;
 	//Background image
 	public String background;
 	public String parallax = null;
@@ -71,12 +73,16 @@ public class Level {
 			//Generate object height
 			y[i] = size.y-rand.nextInt(maxHeight);
 		}
+        //Generate level end, 100 px past last obstacle
+        int le = x[numberObj-1]+100;
+
 		Level l = new Level();
 		l.filenames = files;
 		l.objX = x;
 		l.objY = y;
 		l.background = Backgrounds.DEFAULT.filename;
 		l.parallax = ParallaxEffects.DEFAULT.filename;
+        l.levelFinish = le;
 		return l;
 	}
 }

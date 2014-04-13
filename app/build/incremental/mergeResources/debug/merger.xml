@@ -185,6 +185,8 @@
                 </string>
                 <string name="hello_world" >Hello world!
                 </string>
+                <string name="title_activity_level_complete" >LevelComplete
+                </string>
             </file>
             <file
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values\styles.xml"
@@ -241,6 +243,16 @@
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\xml\prefs.xml"
                 qualifiers=""
                 type="xml" />
+            <file
+                name="levelcomplete"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\levelcomplete.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="loadscreen"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\layout\loadscreen.xml"
+                qualifiers=""
+                type="layout" />
         </source>
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\rs\debug" />
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\generated\debug" />

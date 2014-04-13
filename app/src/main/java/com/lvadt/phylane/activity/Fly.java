@@ -1,6 +1,7 @@
 package com.lvadt.phylane.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Point;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -55,7 +56,7 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 		size = new Point();
 		display.getSize(size);
 		//Init level
-		level = Level.RandomLevel(size, 10, 50, 1, 200);
+		level = Level.RandomLevel(size, 5, 15, 1, 200);
 		//Load opengl stuff
 		glsurface = new GLSurfaceView(Fly.this);
 		glrenderer = new GLRenderer(Fly.this, glsurface, level);
@@ -126,6 +127,14 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 				}
 				glrenderer.getPlaneSprite().x = plane.x;
 				glrenderer.getPlaneSprite().y = plane.y;
+                if(plane.x >= level.levelFinish){
+                    //Player reached the end of the level
+                    Intent i = new Intent(Fly.this, LevelComplete.class);
+                    startActivity(i);
+                    listening = false;
+                    pause = true;
+                    this.finish();
+                }
 			}
 			prevUpdateTime = curTime;
 		}

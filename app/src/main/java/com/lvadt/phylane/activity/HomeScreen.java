@@ -46,7 +46,6 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 		svMain.setOnTouchListener(this);
 		ibMissions.setOnClickListener(this);
 		ibStart.setOnClickListener(this);
-		
 	}
 	
 	@Override
@@ -114,8 +113,8 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 			break;
 		case R.id.ibTakeoff:
 			//Start take off sequence
-			Intent i = new Intent(HomeScreen.this, Fly.class);
-			//i.putExtra("plane", plane);
+			Intent i = new Intent(HomeScreen.this, LoadScreen.class);
+			i.putExtra("class", "com.lvadt.phylane.activity.Fly");
 			startActivity(i);
 			
 			break;

@@ -4,5 +4,6 @@
     <string name="app_name">Phylane</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_level_complete">LevelComplete</string>
 
 </resources>

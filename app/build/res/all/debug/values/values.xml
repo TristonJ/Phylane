@@ -12,6 +12,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Phylane</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_level_complete">LevelComplete</string>
     <!-- From: file:/D:/Android%20Studio/Workspace/Phylane/app/src/main/res/values/styles.xml -->
     <eat-comment />
 

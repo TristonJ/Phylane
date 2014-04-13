@@ -22,7 +22,10 @@
         </activity>
         <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.Fly" android:screenOrientation="landscape">
         </activity>
- 
+        <activity android:label="@string/title_activity_level_complete" android:name="com.lvadt.phylane.activity.LevelComplete" android:screenOrientation="landscape">
+        </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.LoadScreen" android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>
