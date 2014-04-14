@@ -3,36 +3,53 @@ package com.lvadt.phylane.model;
 import com.lvadt.phylane.R;
 
 public class Objects {
-	
+
+    private static final int averageObj = 15;
+
 	// This enum contains all of the missions,
 	// and their required items. It is possible to add more
 	
 	// The format for a single is simply NAME(Special.Type, "title",
 	// "description")
 	// The format for multiple is NAME(new Specials[] {Specials.Type...},
-	// "title", "description")
+	// "title", "description", reward, difficulty)
 	public enum Missions{
 		START(Special.NONE,
 				"None!",
 				"This is your first mission, so it does not have "
 				+ "any mission-specific items. But normally, you would have a mission-"
-				+ "specific item that you would need, and a description here.");
-
+				+ "specific item that you would need, and a description here.",
+                10,
+                1),
+        TEST(Special.NONE,
+                "Test",
+                "Test Mission",
+                10,
+                1);
 		public Special requirement;
 		public Special[] requirements;
 		public String description;
 		public String title;
+        public int reward;
+        public int maxObj;
+        public int minObj;
 
-		Missions(Special s, String t, String d) {
+		Missions(Special s, String t, String d, int r, int dif) {
 			requirement = s;
 			description = d;
 			title = t;
+            reward = r;
+            maxObj = (int) (averageObj*(dif/1.5));
+            minObj = averageObj-(dif*2);
 		}
 
-		Missions(Special[] s, String t, String d) {
+		Missions(Special[] s, String t, String d, int r, int dif) {
 			requirements = s;
 			description = d;
 			title = t;
+            reward = r;
+            maxObj = (int) (averageObj*(dif/1.5));
+            minObj = averageObj-(dif*2);
 		}
 	}
 	

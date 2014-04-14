@@ -1,23 +1,15 @@
 package com.lvadt.phylane.model;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lvadt.phylane.Data;
-import com.lvadt.phylane.model.Objects;
+import com.lvadt.phylane.utils.Data;
 import com.lvadt.phylane.model.Objects.Engine;
 import com.lvadt.phylane.model.Objects.Material;
 import com.lvadt.phylane.model.Objects.Size;
 import com.lvadt.phylane.model.Objects.Special;
 
 import android.content.Context;
-import android.util.Log;
 
 
 //This class will handle everything about the player

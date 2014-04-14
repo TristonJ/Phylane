@@ -1,5 +1,6 @@
 package com.lvadt.phylane.activity;
 
+import com.lvadt.phylane.utils.Data;
 import com.lvadt.phylane.model.Objects.Engine;
 import com.lvadt.phylane.model.Objects.Material;
 import com.lvadt.phylane.model.Objects.Size;
@@ -56,7 +57,7 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 	@Override
 	protected void onPause() {
 		super.onPause();
-		//player.saveData(HomeScreen.this);
+        Data.SavePlayer(HomeScreen.this, player);
 	}
 
 	@Override

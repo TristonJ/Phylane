@@ -1,5 +1,6 @@
 package com.lvadt.phylane.activity;
 
+import com.lvadt.phylane.utils.OnSwipeTouchListener;
 import com.lvadt.phylane.model.Objects.Engine;
 import com.lvadt.phylane.model.Objects.Material;
 import com.lvadt.phylane.model.Objects.Size;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Store extends Activity implements OnClickListener {
@@ -36,6 +38,16 @@ public class Store extends Activity implements OnClickListener {
 		
 		tvItem.setText(getName());
 		tvPrice.setText("Price: " + String.valueOf(getPrice()));
+
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.rlStore);
+        rl.setOnTouchListener(new OnSwipeTouchListener(){
+            public void onSwipeLeft(){
+                prevItem();
+            }
+            public void onSwipeRight() {
+                nextItem();
+            }
+        });
 	}
 
 	@Override
@@ -48,12 +60,6 @@ public class Store extends Activity implements OnClickListener {
 			break;
 		case R.id.ivBuy:
 			buy();
-			break;
-		case R.id.ivPrevItem:
-			prevItem();
-			break;
-		case R.id.ivNextItem:
-			nextItem();
 			break;
 		}
 	}
@@ -166,10 +172,6 @@ public class Store extends Activity implements OnClickListener {
 		//ivItem.setOnClickListener(this);
 		ImageView ivBack = (ImageView) findViewById(R.id.ivBack);
 		ivBack.setOnClickListener(this);
-		ImageView ivPrevItem = (ImageView) findViewById(R.id.ivPrevItem);
-		ivPrevItem.setOnClickListener(this);
-		ImageView ivNextItem = (ImageView) findViewById(R.id.ivNextItem);
-		ivNextItem.setOnClickListener(this);
 		ImageView ivBuy = (ImageView) findViewById(R.id.ivBuy);
 		ivBuy.setOnClickListener(this);
 	}

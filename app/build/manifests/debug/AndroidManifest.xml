@@ -26,6 +26,8 @@
         </activity>
         <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.LoadScreen" android:screenOrientation="landscape">
         </activity>
+        <activity android:label="@string/app_name" android:name="com.lvadt.phylane.activity.MessagePopup" android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>

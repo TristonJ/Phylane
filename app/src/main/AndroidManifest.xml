@@ -63,6 +63,11 @@
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.lvadt.phylane.activity.MessagePopup"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
+        </activity>
     </application>
 
 </manifest>

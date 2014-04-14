@@ -44,28 +44,28 @@ public final class R {
         public static final int action_settings=0x7f090019;
         public static final int ibMissions=0x7f090002;
         public static final int ibTakeoff=0x7f090003;
-        public static final int imageView1=0x7f090011;
-        public static final int ivBack=0x7f090013;
-        public static final int ivBuy=0x7f090014;
+        public static final int imageView1=0x7f090012;
+        public static final int ivBack=0x7f090015;
+        public static final int ivBuy=0x7f090016;
         public static final int ivLevelComplete=0x7f090007;
         public static final int ivLoadingScreen=0x7f090008;
         public static final int ivMMBackground=0x7f09000a;
-        public static final int ivNextItem=0x7f090016;
         public static final int ivOption=0x7f09000d;
-        public static final int ivPrevItem=0x7f090015;
         public static final int ivQuit=0x7f09000e;
         public static final int ivStart=0x7f09000c;
         public static final int ivTitleImage=0x7f09000b;
         public static final int rlLevelComplete=0x7f090004;
+        public static final int rlPopup=0x7f09000f;
+        public static final int rlStore=0x7f090013;
         public static final int svFlight=0x7f090000;
         public static final int svMain=0x7f090001;
-        public static final int tvCurMoney=0x7f090012;
+        public static final int tvCurMoney=0x7f090014;
         public static final int tvItem=0x7f090018;
         public static final int tvLevelCompleteMessage=0x7f090005;
         public static final int tvLevelCompleteTitle=0x7f090006;
         public static final int tvLoadFact=0x7f090009;
-        public static final int tvPopupMessage=0x7f090010;
-        public static final int tvPopupTitle=0x7f09000f;
+        public static final int tvPopupMessage=0x7f090011;
+        public static final int tvPopupTitle=0x7f090010;
         public static final int tvPrice=0x7f090017;
     }
     public static final class layout {

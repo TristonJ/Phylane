@@ -15,6 +15,9 @@
             <file
                 name="testplane.png"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\testplane.png" />
+            <file
+                name="randomroofobject.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\randomroofobject.png" />
         </source>
     </dataSet>
     <dataSet config="debug" >

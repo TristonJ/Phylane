@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lvadt.phylane.R;
+import com.lvadt.phylane.model.Objects;
 
 public class LevelComplete extends Activity implements View.OnClickListener {
 
@@ -48,6 +49,11 @@ public class LevelComplete extends Activity implements View.OnClickListener {
         messageId = new int[1];
         messageId[0] = -1;
 
+        HomeScreen.getPlayer().setMoney(HomeScreen.getPlayer().getMoney() + HomeScreen.getPlayer().getMission().reward);
+        //Move the player to the next mission if there is one
+        if(HomeScreen.getPlayer().getMission().ordinal() < Objects.Missions.values().length-1){
+            HomeScreen.getPlayer().setMission(Objects.Missions.values()[HomeScreen.getPlayer().getMission().ordinal()+1]);
+        }
         next();
     }
 

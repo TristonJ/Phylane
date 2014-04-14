@@ -10,17 +10,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-import com.lvadt.phylane.R;
 import com.lvadt.phylane.graphics.GLRenderer;
 import com.lvadt.phylane.model.Level;
-import com.lvadt.phylane.Physics;
+import com.lvadt.phylane.physics.Physics;
 import com.lvadt.phylane.model.Plane;
 
 //This is where the player is actually flying
 public class Fly extends Activity implements Runnable, OnTouchListener{
 	
 	//Level
-	Level level;
+	private static Level level;
 	
 	//Graphics
 	GLSurfaceView glsurface;
@@ -44,9 +43,9 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 	Plane plane;
 	
 	//Touch 
-	double maxAngle = -.7; 							//This is the maximum angle a user can reach
-	double minAngle = .7; 							//Minimum angle the user can reach
-	double angleChange = 0.5; 						//The angle changes radians every second
+	double maxAngle = -.9; 							//This is the maximum angle a user can reach
+	double minAngle = .9; 							//Minimum angle the user can reach
+	double angleChange = 0.03; 						//The angle changes radians every second
 	Boolean updateAngle = false;
 	
 	@Override
@@ -90,7 +89,7 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 			break;
 		case MotionEvent.ACTION_UP:
 			updateAngle = false;
-			plane.angle = 0;
+			plane.angle = -.1;
 			break;
 		}
 		if(updateAngle){
@@ -103,7 +102,7 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 			}
 		}
 		else
-			plane.angle = 0;
+			plane.angle -= angleChange;
 		if(glrenderer.getPlaneSprite() != null)
 			glrenderer.getPlaneSprite().rot = (float) plane.angle;
 		return true;
@@ -192,6 +191,10 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 	static public Physics getEngine(){
 		return phyEngine;
 	}
+
+    public static Level getLevel(){
+        return level;
+    }
 	
 	class TakeOff implements Runnable{
 

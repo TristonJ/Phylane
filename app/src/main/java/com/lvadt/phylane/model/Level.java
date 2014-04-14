@@ -5,13 +5,21 @@ import java.util.Random;
 import android.graphics.Point;
 
 public class Level {
-	
+
+    //Types
+    //0-Ground
+    //1-Ceiling
+    //2-Midair
 	private enum Objects{
-		MOUNTAIN("mountain.png");
+		MOUNTAIN("mountain.png", 0),
+        TESTCEIL("randomroofobject.png", 1);
 	
 		String filename;
-		Objects(String file){
+        int type;
+
+		Objects(String file, int t){
 			filename = file;
+            type = t;
 		}
 	}
 	
@@ -71,7 +79,17 @@ public class Level {
 				x[i] = rand.nextInt((maxDist+x[i-1]) - (x[i-1]+minDist)) + (x[i-1]+minDist);
 			}
 			//Generate object height
-			y[i] = size.y-rand.nextInt(maxHeight);
+            switch(Objects.values()[pick].type){
+                case 0:
+                    y[i] = size.y-rand.nextInt(maxHeight);
+                    break;
+                case 1:
+                    y[i] = -rand.nextInt(maxHeight);
+                    break;
+                case 2:
+                    y[i] = rand.nextInt(size.y);
+                    break;
+            }
 		}
         //Generate level end, 100 px past last obstacle
         int le = x[numberObj-1]+100;

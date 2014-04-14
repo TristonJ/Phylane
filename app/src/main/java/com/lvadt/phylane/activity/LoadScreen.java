@@ -1,7 +1,6 @@
 package com.lvadt.phylane.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -16,8 +15,6 @@ import com.lvadt.phylane.model.LoadingScreens;
  */
 public class LoadScreen extends Activity implements Runnable{
 
-    boolean loading = true;
-    Context context;
     Class<?> target;
     TextView message;
     ImageView image;

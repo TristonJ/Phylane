@@ -1,25 +1,46 @@
 package com.lvadt.phylane.activity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lvadt.phylane.R;
 
-//This class will handle displaying all of the 
-//bubble popups in the app using a simple dialog.
-//This is (Hopefully) only temporary
-public class MessagePopup{
-	
-	public static void displayMessage(String title, String msg, Context c){
-		Dialog dialog = new Dialog(c);
-		dialog.setContentView(R.layout.popup);
-		TextView Message = (TextView) dialog.findViewById(R.id.tvPopupMessage);
-		TextView Title = (TextView) dialog.findViewById(R.id.tvPopupTitle);
-		Message.setText(msg);
-		Title.setText(title);
-		
-		dialog.show();
-		dialog.dismiss();
+
+public class MessagePopup extends Activity implements View.OnClickListener{
+
+    static String Message;
+    static String Title;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.popup);
+
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.rlPopup);
+        TextView message = (TextView) findViewById(R.id.tvPopupMessage);
+        TextView title = (TextView) findViewById(R.id.tvPopupTitle);
+        rl.setOnClickListener(this);
+        message.setText(Message);
+        title.setText(Title);
+    }
+
+    public static void displayMessage(String title, String msg, Context c){
+        Message = msg;
+        Title = title;
+
+        Intent i = new Intent(c, MessagePopup.class);
+        c.startActivity(i);
 	}
+
+    @Override
+    public void onClick(View v) {
+        MessagePopup.this.finish();
+    }
 }
