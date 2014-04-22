@@ -15,6 +15,10 @@ import com.lvadt.phylane.model.Level;
 import com.lvadt.phylane.physics.Physics;
 import com.lvadt.phylane.model.Plane;
 
+//Current list of all size for every screen item, the default to be scaled from
+//Screen width/height = 1080/728
+//Plane = 160/85
+
 //This is where the player is actually flying
 public class Fly extends Activity implements Runnable, OnTouchListener{
 	
@@ -55,8 +59,10 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 		Display display = getWindowManager().getDefaultDisplay();
 		size = new Point();
 		display.getSize(size);
+
 		//Init level
 		level = Level.RandomLevel(size, 5, 15, 1, 200);
+
 		//Load opengl stuff
 		glsurface = new GLSurfaceView(Fly.this);
 		glrenderer = new GLRenderer(Fly.this, glsurface, level);
@@ -64,14 +70,16 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 		glsurface.setOnTouchListener(this);
 		
 		setContentView(glsurface);
+
         //Initialize variables
 		init();
-		
 		phyEngine = new Physics();
+
 		//Start Takeoff, plane goes through physics test
 		String[] ret = {"a","b"};
 		Boolean fly = phyEngine.TakeOff(plane, ret);
 		TakeOff to = new TakeOff(fly);
+
 		//The "to" object would normally be used
 		if(!fly){
 			Thread.currentThread().interrupt();

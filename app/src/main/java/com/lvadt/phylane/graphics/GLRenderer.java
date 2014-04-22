@@ -57,7 +57,7 @@ public class GLRenderer implements Renderer{
 		Fly.getEngine().setObjects(objects);
 		
 		
-		plane = new Sprite(context, gl, "testplane.png", 0.0f, surfaceView.getHeight()/2);
+		plane = new Sprite(context, gl, "plane.png", 0.0f, surfaceView.getHeight()/2);
 		background = new Sprite(context, gl, level.background, 0.0f, 0.0f);
 		if(level.parallax != null){
 			parallax = new Sprite(context, gl, level.parallax, 0.0f, 0.0f);

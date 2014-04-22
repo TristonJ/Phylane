@@ -11,7 +11,8 @@ public class Level {
     //1-Ceiling
     //2-Midair
 	private enum Objects{
-		MOUNTAIN("mountain.png", 0),
+		MOUNTAIN("mountains.png", 0),
+        REVERSMOUNTAIN("mountains_reversed.png", 0),
         TESTCEIL("randomroofobject.png", 1);
 	
 		String filename;
@@ -72,7 +73,12 @@ public class Level {
 		for(int i = 0; i < numberObj; i++){
 			//Get object type
 			pick = rand.nextInt(values);
-			files[i] = Objects.values()[pick].filename;
+
+            //Make sure the object is not too close to the player
+            if(i > 0)
+			    files[i] = Objects.values()[pick].filename;
+            else
+                files[i] = Objects.values()[0].filename;
 			
 			//Get position
 			if(i > 0){
@@ -84,6 +90,7 @@ public class Level {
                     y[i] = size.y-rand.nextInt(maxHeight);
                     break;
                 case 1:
+                    //If it is too close to start
                     y[i] = -rand.nextInt(maxHeight);
                     break;
                 case 2:

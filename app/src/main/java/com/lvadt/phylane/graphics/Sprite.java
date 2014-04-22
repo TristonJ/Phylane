@@ -114,7 +114,8 @@ public class Sprite {
 	
 	//Render by creating a "square" to display the bitmap on
 	void render(GL10 gl){
-		float ver[] = new float[12];
+
+        float ver[] = new float[12];
 		float tex[] = new float[12];
 		
 		ver[0] = x;				ver[1] = y;
@@ -149,7 +150,7 @@ public class Sprite {
 		FloatBuffer textureBuffer = tbb.asFloatBuffer();
 		textureBuffer.put(tex);
 		textureBuffer.position(0);
-		
+
 		//Draw
 		gl.glPushMatrix();
 		gl.glEnable(GL10.GL_TEXTURE_2D);
@@ -158,11 +159,11 @@ public class Sprite {
 		
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 		gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
-		
-		gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertexBuffer);
+
+        gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertexBuffer);
 		gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, textureBuffer);
-		
-		gl.glDrawArrays(GL10.GL_TRIANGLES, 0, 6);
+
+        gl.glDrawArrays(GL10.GL_TRIANGLES, 0, 6);
 		gl.glPopMatrix();
 	}
 	
