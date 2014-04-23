@@ -25,6 +25,11 @@ public class Player{
 	private List<Material> materials = new ArrayList<Material>();
 	private List<Size> sizes = new ArrayList<Size>();
 	private List<Special> specials = new ArrayList<Special>();
+
+    private Engine currentEngine;
+    private Material currentMaterial;
+    private Size currentSize;
+    private List<Special> currentSpecials = new ArrayList<Special>();
 	
 	//Overloaded constructors for just loading a previous game
 	//and for starting a completely new one
@@ -42,6 +47,10 @@ public class Player{
 		materials.add(Material.ASH);
 		sizes.add(Size.SMALL);
 		specials.add(Special.NONE);
+        currentEngine = Engine.ONE;
+        currentMaterial = Material.ASH;
+        currentSize = Size.SMALL;
+        currentSpecials.add(Special.NONE);
 		
 		Data.SavePlayer(context, this);
 	}
@@ -189,4 +198,30 @@ public class Player{
 	public List<Special> getSpecials(){
 		return specials;
 	}
+
+    public void equip(Engine e){
+        currentEngine = e;
+    }
+    public void equip(Material m){
+        currentMaterial = m;
+    }
+    public void equip(Size s){
+        currentSize = s;
+    }
+    public void equip(List<Special> s){
+        currentSpecials = s;
+    }
+
+    public Engine getCurEngine(){
+        return currentEngine;
+    }
+    public Material getCurMaterial(){
+        return currentMaterial;
+    }
+    public Size getCurSize(){
+        return currentSize;
+    }
+    public List<Special> getCurSpecials(){
+        return currentSpecials;
+    }
 }

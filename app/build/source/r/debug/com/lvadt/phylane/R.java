@@ -41,7 +41,8 @@ public final class R {
         public static final int titleimage=0x7f020017;
     }
     public static final class id {
-        public static final int action_settings=0x7f090019;
+        public static final int action_settings=0x7f09001a;
+        public static final int bEquip=0x7f090019;
         public static final int ibMissions=0x7f090002;
         public static final int ibTakeoff=0x7f090003;
         public static final int imageView1=0x7f090012;

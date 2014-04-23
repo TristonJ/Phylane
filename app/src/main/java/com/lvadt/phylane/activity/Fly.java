@@ -146,10 +146,6 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 			prevUpdateTime = curTime;
 		}
 	}
-
-	public void draw(){
-		
-	}
 	
 	private void init(){
 		plane = HomeScreen.getPlane();

@@ -54,5 +54,13 @@
         android:layout_centerVertical="true"
         android:text="TextView" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Equip"
+        android:id="@+id/bEquip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
 <!-- From: file:/D:/Android%20Studio/Workspace/Phylane/app/src/main/res/layout/store.xml -->

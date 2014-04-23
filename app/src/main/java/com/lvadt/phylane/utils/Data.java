@@ -12,6 +12,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Triston on 4/10/2014.
@@ -20,7 +22,7 @@ import java.io.InputStreamReader;
  */
 public class Data {
 
-    final static int fileLines = 8; //The number of lines needed in the file
+    final static int fileLines = 10; //The number of lines needed in the file
     final static String fileName = "player.txt"; //Filename to save data to
     //Save a byte as the line separator
     final static byte[] entr = System.getProperty("line.separator").getBytes();
@@ -62,6 +64,20 @@ public class Data {
                 fos.write(player.getSpecials().get(i).name().getBytes());
                 fos.write(",".getBytes());
             }
+            fos.write(entr);
+
+            //Save equipped items
+            fos.write(player.getCurEngine().name().getBytes());
+            fos.write(",".getBytes());
+            fos.write(player.getCurMaterial().name().getBytes());
+            fos.write(",".getBytes());
+            fos.write(player.getCurSize().name().getBytes());
+            fos.write(",".getBytes());
+            fos.write(entr);
+            for(int i = 0; i < player.getCurSpecials().size(); i++){
+                fos.write(player.getCurSpecials().get(i).name().getBytes());
+                fos.write(",".getBytes());
+            }
 
             fos.close();
         }
@@ -81,6 +97,8 @@ public class Data {
         String[] ms;
         String[] ss;
         String[] sps;
+        String[] cur = new String[3];
+        String[] curS;
         FileInputStream fis = null;
 
         try {
@@ -97,12 +115,17 @@ public class Data {
             ms = new String[fileData[5].length() - fileData[5].replace(",", ",").length() + 1];
             ss = new String[fileData[6].length() - fileData[6].replace(",", ",").length() + 1];
             sps = new String[fileData[7].length() - fileData[7].replace(",", ",").length() + 1];
+            curS = new String[fileData[9].length() - fileData[9].replace(",", ",").length() + 1];
 
             //Load item data
             es = fileData[4].split(",");
             ms = fileData[5].split(",");
             ss = fileData[6].split(",");
             sps = fileData[7].split(",");
+
+            //Equipped items
+            cur = fileData[8].split(",");
+            curS = fileData[9].split(",");
 
             //Load basic values such as name
             player.setPlayerName(fileData[0]);
@@ -123,6 +146,16 @@ public class Data {
             for(int i = 0; i < sps.length; i++){
                 player.getSpecials().add(Objects.Special.valueOf(sps[i]));
             }
+
+            player.equip(Objects.Engine.valueOf(cur[0]));
+            player.equip(Objects.Material.valueOf(cur[1]));
+            player.equip(Objects.Size.valueOf(cur[2]));
+            //New array of specials equipped
+            List<Objects.Special> tempSp = new ArrayList<Objects.Special>();
+            for(int i = 0; i < curS.length; i++){
+                tempSp.add(Objects.Special.valueOf(curS[i]));
+            }
+            player.equip(tempSp);
 
             fis.close();
         }

@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -61,6 +62,9 @@ public class Store extends Activity implements OnClickListener {
 		case R.id.ivBuy:
 			buy();
 			break;
+        case R.id.bEquip:
+            equip();
+            break;
 		}
 	}
 	
@@ -174,7 +178,42 @@ public class Store extends Activity implements OnClickListener {
 		ivBack.setOnClickListener(this);
 		ImageView ivBuy = (ImageView) findViewById(R.id.ivBuy);
 		ivBuy.setOnClickListener(this);
+        Button equip = (Button) findViewById(R.id.bEquip);
+        equip.setOnClickListener(this);
 	}
+
+    private void equip(){
+        switch(type){
+            case 0:
+                if(HomeScreen.getPlayer().hasItem(Engine.values()[select])) {
+                    HomeScreen.getPlayer().equip(Engine.values()[select]);
+                    HomeScreen.getPlane().setEngine(Engine.values()[select]);
+                }
+                else
+                    MessagePopup.displayMessage("Unable to equip", "You don't have this item!", Store.this);
+                break;
+            case 1:
+                if(HomeScreen.getPlayer().hasItem(Material.values()[select])) {
+                    HomeScreen.getPlayer().equip(Material.values()[select]);
+                    HomeScreen.getPlane().setMaterial(Material.values()[select]);
+                }
+                else
+                    MessagePopup.displayMessage("Unable to equip", "You don't have this item!", Store.this);
+                break;
+            case 2:
+                if(HomeScreen.getPlayer().hasItem(Size.values()[select])) {
+                    HomeScreen.getPlayer().equip(Size.values()[select]);
+                    HomeScreen.getPlane().setSize(Size.values()[select]);
+                }
+                else
+                    MessagePopup.displayMessage("Unable to equip", "You don't have this item!", Store.this);
+                break;
+            case 3:
+                //Do nothing for now. Needed support for specials
+                //HomeScreen.getPlayer().equip(Special.values()[select]);
+                break;
+        }
+    }
 
 	public int getPrice(){
 		switch(type){
@@ -206,4 +245,5 @@ public class Store extends Activity implements OnClickListener {
 		}
 		
 	}
+
 }

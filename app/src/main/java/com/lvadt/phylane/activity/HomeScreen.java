@@ -11,6 +11,7 @@ import com.lvadt.phylane.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
@@ -39,7 +40,7 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 		//Load the players data
 		player = new Player(this);
 		//Load new plane
-		plane = new Plane(Engine.ONE, Material.ASH, Size.SMALL);
+		plane = new Plane(player.getCurEngine(), player.getCurMaterial(), player.getCurSize());
 		//Set up the layout stuff
 		svMain = (SurfaceView) findViewById(R.id.svMain);
 		ibMissions = (ImageButton) findViewById(R.id.ibMissions);
@@ -114,6 +115,7 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 			break;
 		case R.id.ibTakeoff:
 			//Start take off sequence
+            Log.i("Test", plane.getMaterial().getName());
 			Intent i = new Intent(HomeScreen.this, LoadScreen.class);
 			i.putExtra("class", "com.lvadt.phylane.activity.Fly");
 			startActivity(i);
