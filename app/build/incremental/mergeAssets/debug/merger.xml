@@ -10,17 +10,17 @@
                 name="fly_parallax.png"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\fly_parallax.png" />
             <file
-                name="randomroofobject.png"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\randomroofobject.png" />
-            <file
                 name="plane.png"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\plane.png" />
             <file
-                name="mountains.png"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\mountains.png" />
+                name="fly_stormcloud.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\fly_stormcloud.png" />
             <file
-                name="mountains_reversed.png"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\mountains_reversed.png" />
+                name="fly_mountains.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\fly_mountains.png" />
+            <file
+                name="fly_mountains_reversed.png"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\assets\fly_mountains_reversed.png" />
         </source>
     </dataSet>
     <dataSet config="debug" >

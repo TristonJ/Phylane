@@ -28,6 +28,14 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 	SurfaceView svMain;
 	ImageButton ibMissions;
 	ImageButton ibStart;
+
+    //The screen size the menu was designed for
+    private static float defX = 1280;
+    private static float defY = 720;
+
+    //Ratio to make sure part clicks are in the right area
+    float ratioX, ratioY;
+
 	//This is the player object that will be passed around classes
 	//from here
 	private static Plane plane;
@@ -37,10 +45,13 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.homescreen);
+
 		//Load the players data
 		player = new Player(this);
+
 		//Load new plane
 		plane = new Plane(player.getCurEngine(), player.getCurMaterial(), player.getCurSize());
+
 		//Set up the layout stuff
 		svMain = (SurfaceView) findViewById(R.id.svMain);
 		ibMissions = (ImageButton) findViewById(R.id.ibMissions);
@@ -48,6 +59,10 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 		svMain.setOnTouchListener(this);
 		ibMissions.setOnClickListener(this);
 		ibStart.setOnClickListener(this);
+
+        //Set screen ratios
+        ratioX = this.getResources().getDisplayMetrics().widthPixels / defX;
+        ratioY = this.getResources().getDisplayMetrics().heightPixels / defY;
 	}
 	
 	@Override
@@ -58,10 +73,16 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 	@Override
 	protected void onPause() {
 		super.onPause();
-        Data.SavePlayer(HomeScreen.this, player);
+        //Data.SavePlayer(HomeScreen.this, player);
 	}
 
-	@Override
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Data.SavePlayer(HomeScreen.this, player);
+    }
+
+    @Override
 	public boolean onTouch(View v, MotionEvent event) {
 		//Get x and y
 		float x = event.getX();
@@ -71,19 +92,19 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 		//both the item type, and the player reference
 		
 		//Right quadrant
-		if(x < v.getWidth() && x > 960){
+		if(x < v.getWidth() && x > 960*ratioX){
 			Intent i = new Intent(HomeScreen.this, Store.class);
 			i.putExtra("type", 0);
 			startActivity(i);
 		}
 		//Second to right quadrant
-		else if (x < 960 && x > 640){
+		else if (x < 960*ratioX && x > 640*ratioX){
 			Intent i = new Intent(HomeScreen.this, Store.class);
 			i.putExtra("type", 3);
 			startActivity(i);
 		}
 		//Second in quadrant
-		else if (x < 640 && x > 320){
+		else if (x < 640*ratioX && x > 320*ratioX){
 			Intent i = new Intent(HomeScreen.this, Store.class);
 			i.putExtra("type", 2);
 			startActivity(i);

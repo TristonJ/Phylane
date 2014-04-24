@@ -18,13 +18,16 @@ public class GLRenderer implements Renderer{
 
 	//Min and max values for what is being drawn
 	float drawMax, drawMin;
+
 	//Last not-rendered texture (It is offscreen behind player)
 	int lastRendered = 0;
+
 	//Draw the plane at this location on the screen
 	private final float planeDrawAt = 100.0f;
 	private Context context;
 	private GLSurfaceView surfaceView;
-	float lastPlaneX;
+
+    //The needed sprites, and level object
 	Level level;
 	Sprite background;
 	Sprite parallax = null;
@@ -55,8 +58,7 @@ public class GLRenderer implements Renderer{
 		//Create sprites then send them to physics engine
 		addSprite(gl);
 		Fly.getEngine().setObjects(objects);
-		
-		
+
 		plane = new Sprite(context, gl, "plane.png", 0.0f, surfaceView.getHeight()/2);
 		background = new Sprite(context, gl, level.background, 0.0f, 0.0f);
 		if(level.parallax != null){
@@ -81,14 +83,27 @@ public class GLRenderer implements Renderer{
 		background.x = plane.x-planeDrawAt;
 		gl.glTranslatef(-(plane.x-planeDrawAt), 0.0f, 0.0f);
 		
-		//Render
+		//Render background
 		background.render(gl);
-		
+
+        //Render parallax effect
 		if(parallax != null){
 			//Move parallax half the distance of the plane
 			parallax.x = (plane.x - plane.prevX)/2;
+
+            //If the parallax goes beyond screen, put it at front
+            if((parallax.x + parallax.width) < (plane.x - planeDrawAt)){
+                parallax.x = parallax.x + parallax.width;
+            }
+
+            //Draw a second time to the right of the first
 			parallax.render(gl);
+            parallax.x += parallax.width;
+            parallax.render(gl);
+            parallax.x -= parallax.width;
+
 		}
+
 		//Draw objects in render distance
 		for(int i = lastRendered; i < objects.size(); i++){
 			if(objects.get(i).x < drawMin+plane.x){
