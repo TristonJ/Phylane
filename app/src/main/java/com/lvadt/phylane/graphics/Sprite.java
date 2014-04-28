@@ -18,11 +18,10 @@ import android.util.Log;
 
 public class Sprite {
 
-    private static float defWidth = 1280;
-    private static float defHeight = 720;
-    private double wRatio, hRatio;
+    private static final float defWidth = 1280;
+    private static final float defHeight = 720;
+    private static double wRatio, hRatio;
 	private static final String TAG = "Sprite";
-	private Resources res;
     private Bitmap tempbmp; //Unscaled bitmap
 	private Context context;
 
@@ -37,9 +36,8 @@ public class Sprite {
 
     //Initialize a new sprite class
 	public Sprite(Context c, GL10 gl, String fileName, float posx, float posy){
-		context = c;
-		res = c.getResources();
-        wRatio = c.getResources().getDisplayMetrics().widthPixels/defWidth;
+        context = c;
+	    wRatio = c.getResources().getDisplayMetrics().widthPixels/defWidth;
         hRatio = c.getResources().getDisplayMetrics().heightPixels/defHeight;
 		loadTexture(gl, fileName);
 		x = posx;

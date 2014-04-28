@@ -57,7 +57,7 @@ public class Objects {
 	// Drawable)
 	// Power is in N, Weight in kg.
 	public enum Engine {
-		ONE(new GameObject("Engine One", 20, 650, 1, R.drawable.testplaneimage));
+		ONE(new GameObject("Engine One", 20, 650, 1, R.drawable.box));
 
 		private GameObject obj;
 
@@ -101,8 +101,8 @@ public class Objects {
 	// That should well represent it's real life form. Keeping in mind that
 	// the density is only used to calculate the mass of ONLY the outer shell of the plane
 	public enum Material {
-		ASH(new GameObject("Ash", 3, 1, R.drawable.testplaneimage)),
-		ALUMINUM(new GameObject("Aluminum", 1, 1, R.drawable.testplaneimage));
+		ASH(new GameObject("Ash", 3, 1, R.drawable.box)),
+		ALUMINUM(new GameObject("Aluminum", 1, 1, R.drawable.box));
 
 		private GameObject obj;
 
@@ -139,7 +139,7 @@ public class Objects {
 
 	// The different sizes. Params are ("Name", Volume, Price, Drawable)
 	public enum Size {
-		SMALL(new GameObject("Small", 3, 1, R.drawable.testplaneimage));
+		SMALL(new GameObject("Small", 3, 1, R.drawable.box));
 
 		private GameObject obj;
 
@@ -176,8 +176,8 @@ public class Objects {
 	
 	// The mission specific items. Params are ("Name", Weight, Price, id)
 	public enum Special {
-		NONE(new GameObject("None", 0, 0, R.drawable.testplaneimage)),
-		SMALLCARGOBAY(new GameObject("Small Cargo Bay", 3000, 1, R.drawable.testplaneimage ));
+		NONE(new GameObject("None", 0, 0, R.drawable.box)),
+		SMALLCARGOBAY(new GameObject("Small Cargo Bay", 3000, 1, R.drawable.box));
 		
 		private GameObject obj;
 

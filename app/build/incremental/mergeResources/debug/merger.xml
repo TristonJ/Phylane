@@ -9,23 +9,8 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
-                name="bubble"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\bubble.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
                 name="buybutton"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\buybutton.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="fly_background"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\fly_background.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="fly_parallax"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\fly_parallax.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -49,23 +34,8 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
-                name="mountain"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\mountain.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="nextitem"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\nextitem.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
                 name="optionbutton"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\optionbutton.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="previtem"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\previtem.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -89,23 +59,8 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
-                name="takeoff_background"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\takeoff_background.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="takeoff_parallax"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\takeoff_parallax.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
                 name="testplane"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\testplane.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="testplaneimage"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\testplaneimage.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -263,6 +218,21 @@
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\load_lift.png"
                 qualifiers="hdpi"
                 type="drawable" />
+            <file
+                name="box"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\box.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="scaledown"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\anim\scaledown.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="scaleup"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\anim\scaleup.xml"
+                qualifiers=""
+                type="anim" />
         </source>
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\rs\debug" />
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\generated\debug" />

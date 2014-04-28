@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -123,6 +124,7 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 		while (!pause) {
 			double curTime = System.nanoTime();
 			double deltaTime = (curTime - prevUpdateTime)/UPDATE_TIME;
+            Log.i("FPS", "FPS: " + 1000000000/(curTime - prevUpdateTime));
 			if(glrenderer.getPlaneSprite() != null){
 				phyEngine.update(plane, deltaTime);
 				if(phyEngine.collision(size, plane, glrenderer.getPlaneSprite())){

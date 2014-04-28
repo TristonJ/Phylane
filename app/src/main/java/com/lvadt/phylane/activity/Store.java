@@ -11,6 +11,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,9 +24,10 @@ public class Store extends Activity implements OnClickListener {
 	Boolean typeSet = false;
 	
 	int type;
-	
-	//No images right now
-	//ImageView ivItem;
+
+	ImageView ivItem;
+    ImageView ivNext;
+    ImageView ivPrev;
 	TextView tvItem;
 	TextView tvPrice;
 	TextView tvCurMoney;
@@ -44,9 +47,11 @@ public class Store extends Activity implements OnClickListener {
         rl.setOnTouchListener(new OnSwipeTouchListener(){
             public void onSwipeLeft(){
                 prevItem();
+                moveImage();
             }
             public void onSwipeRight() {
                 nextItem();
+                moveImage();
             }
         });
 	}
@@ -167,19 +172,92 @@ public class Store extends Activity implements OnClickListener {
 		tvItem.setText(getName());
 		tvPrice.setText("Price: " + String.valueOf(getPrice()));
 	}
+
+    private void moveImage(){
+        Animation au = AnimationUtils.loadAnimation(Store.this, R.anim.scaleup);
+        Animation ad = AnimationUtils.loadAnimation(Store.this, R.anim.scaledown);
+        switch(type){
+        case 0:
+            ivItem.setImageResource(Engine.values()[select].getId());
+            ivNext.startAnimation(au);
+            if(select+1 < Engine.values().length) {
+                ivNext.setImageResource(Engine.values()[select + 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivNext.setImageDrawable(null);
+            if(select-1 >= 0){
+                ivPrev.setImageResource(Engine.values()[select - 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivPrev.setImageDrawable(null);
+            break;
+        case 1:
+            ivItem.setImageResource(Material.values()[select].getId());
+            ivNext.startAnimation(au);
+            if(select+1 < Material.values().length) {
+                ivNext.setImageResource(Material.values()[select + 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivNext.setImageDrawable(null);
+            if(select-1 >= 0){
+                ivPrev.setImageResource(Material.values()[select - 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivPrev.setImageDrawable(null);
+            break;
+        case 2:
+            ivItem.setImageResource(Size.values()[select].getId());
+            ivNext.startAnimation(au);
+            if(select+1 < Size.values().length) {
+                ivNext.setImageResource(Size.values()[select + 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivNext.setImageDrawable(null);
+            if(select-1 >= 0){
+                ivPrev.setImageResource(Size.values()[select - 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivPrev.setImageDrawable(null);
+            break;
+        case 3:
+            ivItem.setImageResource(Special.values()[select].getId());
+            ivNext.startAnimation(au);
+            if(select+1 < Special.values().length) {
+                ivNext.setImageResource(Special.values()[select + 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivNext.setImageDrawable(null);
+            if(select-1 >= 0){
+                ivPrev.setImageResource(Special.values()[select - 1].getId());
+                ivNext.startAnimation(ad);
+            }
+            else
+                ivPrev.setImageDrawable(null);
+            break;
+        }
+    }
 	private void init(){
+        ivItem = (ImageView) findViewById(R.id.ivItem);
+        ivNext = (ImageView) findViewById(R.id.ivNextItem);
+        ivPrev = (ImageView) findViewById(R.id.ivPrevItem);
 		tvItem = (TextView) findViewById(R.id.tvItem);
 		tvPrice = (TextView) findViewById(R.id.tvPrice);
-		//ivItem = (ImageView) findViewById(R.id.//ivItem);
 		tvCurMoney = (TextView) findViewById(R.id.tvCurMoney);
 		tvCurMoney.setText(String.valueOf(HomeScreen.getPlayer().getMoney()));
-		//ivItem.setOnClickListener(this);
 		ImageView ivBack = (ImageView) findViewById(R.id.ivBack);
 		ivBack.setOnClickListener(this);
 		ImageView ivBuy = (ImageView) findViewById(R.id.ivBuy);
 		ivBuy.setOnClickListener(this);
         Button equip = (Button) findViewById(R.id.bEquip);
         equip.setOnClickListener(this);
+        moveImage();
 	}
 
     private void equip(){
