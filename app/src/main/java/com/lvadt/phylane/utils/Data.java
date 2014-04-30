@@ -46,36 +46,36 @@ public class Data {
 
             //Write all of the players inventory
             for(int i = 0; i < player.getEngines().size(); i++){
-                fos.write(player.getEngines().get(i).name().getBytes());
+                fos.write(player.getEngines().get(i).rName.getBytes());
                 fos.write(",".getBytes());
             }
             fos.write(entr);
             for(int i = 0; i < player.getMaterials().size(); i++){
-                fos.write(player.getMaterials().get(i).name().getBytes());
+                fos.write(player.getMaterials().get(i).rName.getBytes());
                 fos.write(",".getBytes());
             }
             fos.write(entr);
             for(int i = 0; i < player.getSizes().size(); i++){
-                fos.write(player.getSizes().get(i).name().getBytes());
+                fos.write(player.getSizes().get(i).rName.getBytes());
                 fos.write(",".getBytes());
             }
             fos.write(entr);
             for(int i = 0; i < player.getSpecials().size(); i++){
-                fos.write(player.getSpecials().get(i).name().getBytes());
+                fos.write(player.getSpecials().get(i).rName.getBytes());
                 fos.write(",".getBytes());
             }
             fos.write(entr);
 
             //Save equipped items
-            fos.write(player.getCurEngine().name().getBytes());
+            fos.write(player.getCurEngine().rName.getBytes());
             fos.write(",".getBytes());
-            fos.write(player.getCurMaterial().name().getBytes());
+            fos.write(player.getCurMaterial().rName.getBytes());
             fos.write(",".getBytes());
-            fos.write(player.getCurSize().name().getBytes());
+            fos.write(player.getCurSize().rName.getBytes());
             fos.write(",".getBytes());
             fos.write(entr);
             for(int i = 0; i < player.getCurSpecials().size(); i++){
-                fos.write(player.getCurSpecials().get(i).name().getBytes());
+                fos.write(player.getCurSpecials().get(i).rName.getBytes());
                 fos.write(",".getBytes());
             }
 
@@ -135,21 +135,21 @@ public class Data {
 
             //Load the players inventory
             for(int i = 0; i < es.length; i++){
-                player.getEngines().add(Objects.Engine.valueOf(es[i]));
+                player.getEngines().add(Objects.Engine.valueOf(es[i]).getObj());
             }
             for(int i = 0; i < ms.length; i++){
-                player.getMaterials().add(Objects.Material.valueOf(ms[i]));
+                player.getMaterials().add(Objects.Material.valueOf(ms[i]).getObj());
             }
             for(int i = 0; i < ss.length; i++){
-                player.getSizes().add(Objects.Size.valueOf(ss[i]));
+                player.getSizes().add(Objects.Size.valueOf(ss[i]).getObj());
             }
             for(int i = 0; i < sps.length; i++){
-                player.getSpecials().add(Objects.Special.valueOf(sps[i]));
+                player.getSpecials().add(Objects.Special.valueOf(sps[i]).getObj());
             }
 
-            player.equip(Objects.Engine.valueOf(cur[0]));
-            player.equip(Objects.Material.valueOf(cur[1]));
-            player.equip(Objects.Size.valueOf(cur[2]));
+            player.equip(Objects.Engine.valueOf(cur[0]).getObj(), Objects.Types.ENGINE);
+            player.equip(Objects.Material.valueOf(cur[1]).getObj(), Objects.Types.MATERIAL);
+            player.equip(Objects.Size.valueOf(cur[2]).getObj(), Objects.Types.SIZE);
             //New array of specials equipped
             List<Objects.Special> tempSp = new ArrayList<Objects.Special>();
             for(int i = 0; i < curS.length; i++){

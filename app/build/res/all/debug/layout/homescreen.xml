@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-    <SurfaceView
-        android:id="@+id/svMain"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/homescreenplane" />
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundclouds">
 
     <ImageButton
         android:id="@+id/ibMissions"
@@ -28,6 +19,84 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/takeoffbutton" />
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:id="@+id/ivEngine"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:focusable="false"/>
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:id="@+id/ivSpecial"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"/>
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:id="@+id/ivMaterial"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/ivEngine"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:id="@+id/ivSize"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/ivMaterial"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Engines"
+        android:id="@+id/textView"
+        android:layout_above="@+id/ivEngine"
+        android:layout_alignLeft="@+id/ivEngine"
+        android:layout_alignStart="@+id/ivEngine"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Materials"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/ivMaterial"
+        android:layout_alignLeft="@+id/ivMaterial"
+        android:layout_alignStart="@+id/ivMaterial"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sizes"
+        android:id="@+id/textView3"
+        android:layout_above="@+id/ivSize"
+        android:layout_alignLeft="@+id/ivSize"
+        android:layout_alignStart="@+id/ivSize"
+        android:singleLine="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Specials"
+        android:id="@+id/textView4"
+        android:layout_above="@+id/ivSpecial"
+        android:layout_alignLeft="@+id/ivSpecial"
+        android:layout_alignStart="@+id/ivSpecial"/>
 
 </RelativeLayout>
 <!-- From: file:/D:/Android%20Studio/Workspace/Phylane/app/src/main/res/layout/homescreen.xml -->

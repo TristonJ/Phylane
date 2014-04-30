@@ -7,9 +7,11 @@ import com.lvadt.phylane.model.Objects.Size;
 import com.lvadt.phylane.model.Plane;
 import com.lvadt.phylane.model.Player;
 import com.lvadt.phylane.R;
+import com.lvadt.phylane.utils.Sound;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -18,16 +20,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 //This is the "HomeScreen" of the app.
 //The plane with the start button, customize, ext,
 //is here.
-public class HomeScreen extends Activity implements OnTouchListener, OnClickListener{
+public class HomeScreen extends Activity implements OnClickListener{
 
 	//Layout stuff
-	SurfaceView svMain;
+	//SurfaceView svMain;
 	ImageButton ibMissions;
 	ImageButton ibStart;
+    ImageView ivE;
+    ImageView ivM;
+    ImageView ivS;
+    ImageView ivSP;
+
+    MediaPlayer mp = null;
 
     //The screen size the menu was designed for
     private static float defX = 1280;
@@ -53,21 +62,45 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 		plane = new Plane(player.getCurEngine(), player.getCurMaterial(), player.getCurSize());
 
 		//Set up the layout stuff
-		svMain = (SurfaceView) findViewById(R.id.svMain);
+		//svMain = (SurfaceView) findViewById(R.id.svMain);
 		ibMissions = (ImageButton) findViewById(R.id.ibMissions);
 		ibStart = (ImageButton) findViewById(R.id.ibTakeoff);
-		svMain.setOnTouchListener(this);
+		//svMain.setOnTouchListener(this);
 		ibMissions.setOnClickListener(this);
 		ibStart.setOnClickListener(this);
+
+        ivE = (ImageView) findViewById(R.id.ivEngine);
+        ivM = (ImageView) findViewById(R.id.ivMaterial);
+        ivS = (ImageView) findViewById(R.id.ivSize);
+        ivSP = (ImageView) findViewById(R.id.ivSpecial);
+
+        ivE.setImageResource(player.getCurEngine().getId());
+        ivM.setImageResource(player.getCurMaterial().getId());
+        ivS.setImageResource(player.getCurSize().getId());
+        ivSP.setImageResource(player.getCurSpecials().get(0).getId());
+
+        ivE.setOnClickListener(this);
+        ivM.setOnClickListener(this);
+        ivS.setOnClickListener(this);
+        ivSP.setOnClickListener(this);
 
         //Set screen ratios
         ratioX = this.getResources().getDisplayMetrics().widthPixels / defX;
         ratioY = this.getResources().getDisplayMetrics().heightPixels / defY;
+
+        mp = MediaPlayer.create(this, R.raw.maintheme);
+        mp.setLooping(true);
+        mp.start();
+
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
+        ivE.setImageResource(player.getCurEngine().getId());
+        ivM.setImageResource(player.getCurMaterial().getId());
+        ivS.setImageResource(player.getCurSize().getId());
+        ivSP.setImageResource(player.getCurSpecials().get(0).getId());
 	}
 
 	@Override
@@ -81,43 +114,6 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
         super.onDestroy();
         Data.SavePlayer(HomeScreen.this, player);
     }
-
-    @Override
-	public boolean onTouch(View v, MotionEvent event) {
-		//Get x and y
-		float x = event.getX();
-		float y = event.getY();
-		//Test what area of the screen the user touched
-		//When I add intents for each section, make sure to add a put extra for
-		//both the item type, and the player reference
-		
-		//Right quadrant
-		if(x < v.getWidth() && x > 960*ratioX){
-			Intent i = new Intent(HomeScreen.this, Store.class);
-			i.putExtra("type", 0);
-			startActivity(i);
-		}
-		//Second to right quadrant
-		else if (x < 960*ratioX && x > 640*ratioX){
-			Intent i = new Intent(HomeScreen.this, Store.class);
-			i.putExtra("type", 3);
-			startActivity(i);
-		}
-		//Second in quadrant
-		else if (x < 640*ratioX && x > 320*ratioX){
-			Intent i = new Intent(HomeScreen.this, Store.class);
-			i.putExtra("type", 2);
-			startActivity(i);
-		}
-		//First quadrant
-		else{
-			Intent i = new Intent(HomeScreen.this, Store.class);
-			i.putExtra("type", 1);
-			startActivity(i);
-		}
-		
-		return false;
-	}
 	
 	public static Plane getPlane(){
 		return plane;
@@ -140,8 +136,27 @@ public class HomeScreen extends Activity implements OnTouchListener, OnClickList
 			Intent i = new Intent(HomeScreen.this, LoadScreen.class);
 			i.putExtra("class", "com.lvadt.phylane.activity.Fly");
 			startActivity(i);
-			
+            break;
+        case R.id.ivEngine:
+            Intent e = new Intent(HomeScreen.this, Store.class);
+            e.putExtra("type", 0);
+            startActivity(e);
+            break;
+        case R.id.ivMaterial:
+            Intent m = new Intent(HomeScreen.this, Store.class);
+            m.putExtra("type", 1);
+            startActivity(m);
 			break;
+        case R.id.ivSize:
+            Intent s = new Intent(HomeScreen.this, Store.class);
+            s.putExtra("type", 2);
+            startActivity(s);
+            break;
+        case R.id.ivSpecial:
+            Intent z = new Intent(HomeScreen.this, Store.class);
+            z.putExtra("type", 3);
+            startActivity(z);
+            break;
 		}
 		
 	}

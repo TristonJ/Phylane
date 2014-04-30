@@ -43,7 +43,10 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 	final double RENDER_TIME = 1000000000 / FPS;		//Time between renders
 	double prevUpdateTime = System.nanoTime();			//The previous time was measured
 	boolean listening = true;							//Tells the ontouchlistener to listen or not
-	
+
+    double up = 0;
+    int updates = 0;
+
 	//Plane stuff
 	Plane plane;
 	
@@ -124,7 +127,8 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 		while (!pause) {
 			double curTime = System.nanoTime();
 			double deltaTime = (curTime - prevUpdateTime)/UPDATE_TIME;
-            Log.i("FPS", "FPS: " + 1000000000/(curTime - prevUpdateTime));
+
+            prevUpdateTime = curTime;
 			if(glrenderer.getPlaneSprite() != null){
 				phyEngine.update(plane, deltaTime);
 				if(phyEngine.collision(size, plane, glrenderer.getPlaneSprite())){
@@ -145,7 +149,6 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
                     this.finish();
                 }
 			}
-			prevUpdateTime = curTime;
 		}
 	}
 	

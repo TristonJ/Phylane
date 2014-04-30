@@ -4,8 +4,38 @@
     <dataSet config="main" >
         <source path="D:\Android Studio\Workspace\Phylane\app\src\main\res" >
             <file
+                name="scaledown"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\anim\scaledown.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="scaleup"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\anim\scaleup.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="alien"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\alien.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="aluminum"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\aluminum.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="backbutton"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\backbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="backgroundclouds"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\backgroundclouds.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="box"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\box.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -24,8 +54,28 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="large"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\large.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="load_flyerone"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\load_flyerone.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="load_lift"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\load_lift.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="mainmenubackground"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\mainmenubackground.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="medium"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\medium.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -44,6 +94,11 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="small"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\small.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="splash"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\splash.png"
                 qualifiers="hdpi"
@@ -51,6 +106,11 @@
             <file
                 name="startbutton"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\startbutton.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="steel"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\steel.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -64,8 +124,18 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="titanium"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\titanium.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="titleimage"
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\titleimage.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="wood"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\wood.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -133,6 +203,11 @@
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\menu\splash.xml"
                 qualifiers=""
                 type="menu" />
+            <file
+                name="maintheme"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\raw\maintheme.mp3"
+                qualifiers=""
+                type="raw" />
             <file
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\values\dimens.xml"
                 qualifiers="" >
@@ -208,31 +283,6 @@
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\xml\prefs.xml"
                 qualifiers=""
                 type="xml" />
-            <file
-                name="load_flyerone"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\load_flyerone.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="load_lift"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\load_lift.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="box"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\box.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="scaledown"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\anim\scaledown.xml"
-                qualifiers=""
-                type="anim" />
-            <file
-                name="scaleup"
-                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\anim\scaleup.xml"
-                qualifiers=""
-                type="anim" />
         </source>
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\rs\debug" />
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\generated\debug" />

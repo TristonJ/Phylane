@@ -8,13 +8,16 @@ import com.lvadt.phylane.model.Objects.Material;
 import com.lvadt.phylane.model.Objects.Size;
 import com.lvadt.phylane.model.Objects.Special;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Plane{
 
 	
-	private Engine engine;
-	private Material material;
-	private Size size;
-	private Special[] specials;
+	private GameObject engine;
+	private GameObject material;
+	private GameObject size;
+	private GameObject[] specials;
 	static private Sprite sprite;
 	
 	//Bounding box
@@ -32,12 +35,12 @@ public class Plane{
 	public double weight;
 	
 	
-	public Plane(Engine e, Material m, Size s){
+	public Plane(GameObject e, GameObject m, GameObject s){
 		engine = e;
 		material = m;
 		size = s;
 		//Just in case any specials are not defined
-		specials = new Special[]{Special.NONE};
+		specials = new GameObject[]{Special.NONE.getObj()};
 	}
 	
 	public void setSprite(Sprite s){
@@ -47,36 +50,52 @@ public class Plane{
 	public Sprite getSprite(){
 		return sprite;
 	}
+
+    public void set(GameObject o, Objects.Types t){
+        switch(t){
+            case ENGINE:
+                engine = o;
+            case MATERIAL:
+                material = o;
+            case SIZE:
+                size = o;
+            case SPECIAL:
+                //   currentSpecials = Special.values()[x];
+        }
+    }
+
+    public void set(GameObject o[], Objects.Types t[]){
+        List<GameObject> sp = new ArrayList<GameObject>();
+        for(int i = 0; i < t.length; i++){
+            switch(t[i]){
+                case ENGINE:
+                    engine = o[i];
+                case MATERIAL:
+                    material = o[i];
+                case SIZE:
+                    size = o[i];
+                case SPECIAL:
+                    sp.add(o[i]);
+            }
+        }
+        //Convert specials to array
+        specials = sp.toArray(new GameObject[sp.size()]);
+        sp.clear();
+    }
 	
-	public void setEngine(Engine e){
-		engine = e;
-	}
-	
-	public Engine getEngine(){
+	public GameObject getEngine(){
 		return engine;
 	}
 	
-	public void setMaterial(Material m){
-		material = m;
-	}
-	
-	public Material getMaterial(){
+	public GameObject getMaterial(){
 		return material;
 	}
 	
-	public void setSize(Size s){
-		size = s;
-	}
-	
-	public Size getSize(){
+	public GameObject getSize(){
 		return size;
 	}
 	
-	public void setSpecials(Special[] s){
-		specials = s;
-	}
-	
-	public Special[] getSpecials(){
+	public GameObject[] getSpecials(){
 		return specials;
 	}
 	

@@ -10,9 +10,11 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
+import android.util.Log;
 
 import com.lvadt.phylane.model.Level;
 import com.lvadt.phylane.activity.Fly;
+import com.lvadt.phylane.model.WorldObject;
 
 public class GLRenderer implements Renderer{
 
@@ -32,7 +34,8 @@ public class GLRenderer implements Renderer{
 	Sprite background;
 	Sprite parallax = null;
 	Sprite plane;
-	List<Sprite> objects = new ArrayList<Sprite>();
+	List<Sprite> objSprites = new ArrayList<Sprite>();
+    List<WorldObject> objects = new ArrayList<WorldObject>();
 	
 	//Context, SurfaceView, Plane, Background, Objects
 	public GLRenderer(Context c, GLSurfaceView sv, Level l){
@@ -47,8 +50,27 @@ public class GLRenderer implements Renderer{
 	
 	//Load New static sprite's
 	private void addSprite(GL10 gl){
+        List<String> names = new ArrayList<String>();
 		for(int i = 0; i < level.filenames.length; i++){
-			objects.add(new Sprite(context, gl, level.filenames[i], level.objX[i], level.objY[i]));
+			if(names.contains(level.filenames[i]) && !names.isEmpty()){
+                //Add a new world object
+                objects.add(new WorldObject(level.objX[i], level.objY[i],
+                        objSprites.get(names.indexOf(level.filenames[i])).width,
+                        objSprites.get(names.indexOf(level.filenames[i])).height,
+                        names.indexOf(level.filenames[i])));
+            }
+            else{
+                Log.i("Test", "New Sprite");
+                //Add the new file
+                names.add(level.filenames[i]);
+                //Add the new sprite
+                objSprites.add(new Sprite(context, gl, level.filenames[i], level.objX[i], level.objY[i]));
+                //Add the new world object
+                objects.add(new WorldObject(level.objX[i], level.objY[i],
+                        objSprites.get(names.indexOf(level.filenames[i])).width,
+                        objSprites.get(names.indexOf(level.filenames[i])).height,
+                        names.indexOf(level.filenames[i])));
+            }
 		}
 	}
 	
@@ -57,7 +79,7 @@ public class GLRenderer implements Renderer{
 		initGLSettings(gl, config);
 		//Create sprites then send them to physics engine
 		addSprite(gl);
-		Fly.getEngine().setObjects(objects);
+		Fly.getEngine().setObjects(objSprites, objects);
 
 		plane = new Sprite(context, gl, "plane.png", 0.0f, surfaceView.getHeight()/2);
 		background = new Sprite(context, gl, level.background, 0.0f, 0.0f);
@@ -110,10 +132,14 @@ public class GLRenderer implements Renderer{
 				lastRendered = i;
 			}
 			else if(objects.get(i).x > drawMax + plane.x){
-				i = objects.size();
+				break;
 			}
 			else{
-				objects.get(i).render(gl);
+                //Get the objects reference to a sprite, and then draw
+                //Said sprite
+                int ref = (objects.get(i).ref);
+                objSprites.get(ref).setPos(objects.get(i).x, objects.get(i).y);
+				objSprites.get(ref).render(gl);
 			}
 		}
 		plane.render(gl);
@@ -143,8 +169,8 @@ public class GLRenderer implements Renderer{
 		plane.destroy();
 		background.destroy();
 		parallax.destroy();
-		for(int i = 0; i < objects.size(); i++){
-			objects.get(i).destroy();
+		for(int i = 0; i < objSprites.size(); i++){
+			objSprites.get(i).destroy();
 		}
 		//Stop thread from continuing
 	}

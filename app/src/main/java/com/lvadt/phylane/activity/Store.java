@@ -1,5 +1,7 @@
 package com.lvadt.phylane.activity;
 
+import com.lvadt.phylane.model.GameObject;
+import com.lvadt.phylane.model.Objects;
 import com.lvadt.phylane.utils.OnSwipeTouchListener;
 import com.lvadt.phylane.model.Objects.Engine;
 import com.lvadt.phylane.model.Objects.Material;
@@ -9,6 +11,7 @@ import com.lvadt.phylane.R;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -40,18 +43,18 @@ public class Store extends Activity implements OnClickListener {
 		init();
 		type = getIntent().getIntExtra("type", 0);
 		
-		tvItem.setText(getName());
-		tvPrice.setText("Price: " + String.valueOf(getPrice()));
+		tvItem.setText(getObject().getName());
+		tvPrice.setText("Price: " + String.valueOf(getObject().getPrice()));
 
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.rlStore);
+
+        moveImage();
         rl.setOnTouchListener(new OnSwipeTouchListener(){
             public void onSwipeLeft(){
-                prevItem();
-                moveImage();
+                nextItem();
             }
             public void onSwipeRight() {
-                nextItem();
-                moveImage();
+                prevItem();
             }
         });
 	}
@@ -74,175 +77,46 @@ public class Store extends Activity implements OnClickListener {
 	}
 	
 	private Boolean buy(){
-		switch(type){
-		case 0:
-			if(HomeScreen.getPlayer().hasItem(Engine.values()[select]) ||
-					!HomeScreen.getPlayer().buy(Engine.values()[select])){
-				return false;
-			}
-			tvCurMoney.setText(String.valueOf(HomeScreen.getPlayer().getMoney()));
-			MessagePopup.displayMessage("You bought " + getName(), "It cost " + String.valueOf(getPrice()), Store.this);
-			return true;
-		case 1:
-			if(HomeScreen.getPlayer().hasItem(Material.values()[select]) || 
-					!HomeScreen.getPlayer().buy(Material.values()[select])){
-				return false;
-			}
-			tvCurMoney.setText(String.valueOf(HomeScreen.getPlayer().getMoney()));
-			MessagePopup.displayMessage("You bought " + getName(), "It cost " + String.valueOf(getPrice()), Store.this);
-			return true;
-		case 2:
-			if(HomeScreen.getPlayer().hasItem(Size.values()[select]) || 
-					!HomeScreen.getPlayer().buy(Size.values()[select])){
-				return false;
-			}
-			tvCurMoney.setText(String.valueOf(HomeScreen.getPlayer().getMoney()));
-			MessagePopup.displayMessage("You bought " + getName(), "It cost " + String.valueOf(getPrice()), Store.this);
-			return true;
-		case 3:
-			if(HomeScreen.getPlayer().hasItem(Special.values()[select]) || 
-					!HomeScreen.getPlayer().buy(Special.values()[select])){
-				return false;
-			}
-			tvCurMoney.setText(String.valueOf(HomeScreen.getPlayer().getMoney()));
-			MessagePopup.displayMessage("You bought " + getName(), "It cost " + String.valueOf(getPrice()), Store.this);
-			return true;
-		}
-		return false;
+        if(HomeScreen.getPlayer().hasItem(getObject(), getType()) ||
+                !HomeScreen.getPlayer().buy(getObject(), getType())){
+            return false;
+        }
+        tvCurMoney.setText(String.valueOf(HomeScreen.getPlayer().getMoney()));
+        MessagePopup.displayMessage("You bought " + getObject().getName(), "It cost " +
+        String.valueOf(getObject().getPrice()), Store.this);
+        return true;
 	}
 	
 	private void nextItem(){
-		switch(type){
-		case 0:
-			select++;
-			if(select >= Engine.values().length){
-				select = 0;
-			}	
-			break;
-		case 1:
-			select++;
-			if(select >= Material.values().length){
-				select = 0;
-			}
-			break;
-		case 2:
-			select++;
-			if(select >= Size.values().length){
-				select = 0;
-			}
-			break;
-		case 3:
-			select++;
-			if(select >= Special.values().length){
-				select = 0;
-			}
-			break;
-		}
-		tvItem.setText(getName());
-		tvPrice.setText("Price: " + String.valueOf(getPrice()));
+        select++;
+        if(select >= getLen())
+            select = 0;
+		tvItem.setText(getObject().getName());
+		tvPrice.setText("Price: " + String.valueOf(getObject().getPrice()));
+        moveImage();
 	}
 	
 	private void prevItem(){
-		switch(type){
-		case 0:
-			select--;
-			if(select < 0){
-				select = Engine.values().length-1;
-			}
-			break;
-		case 1:
-			select--;
-			if(select < 0){
-				select = Material.values().length-1;
-			}
-			break;
-		case 2:
-			select--;
-			if(select < 0){
-				select = Size.values().length-1;
-			}
-			break;
-		case 3:
-			select--;
-			if(select < 0){
-				select = Special.values().length-1;
-			}
-			break;
-		}
-		tvItem.setText(getName());
-		tvPrice.setText("Price: " + String.valueOf(getPrice()));
+        select--;
+        if(select < 0)
+            select = getLen()-1;
+		tvItem.setText(getObject().getName());
+		tvPrice.setText("Price: " + String.valueOf(getObject().getPrice()));
+        moveImage();
 	}
 
     private void moveImage(){
-        Animation au = AnimationUtils.loadAnimation(Store.this, R.anim.scaleup);
-        Animation ad = AnimationUtils.loadAnimation(Store.this, R.anim.scaledown);
-        switch(type){
-        case 0:
-            ivItem.setImageResource(Engine.values()[select].getId());
-            ivNext.startAnimation(au);
-            if(select+1 < Engine.values().length) {
-                ivNext.setImageResource(Engine.values()[select + 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivNext.setImageDrawable(null);
-            if(select-1 >= 0){
-                ivPrev.setImageResource(Engine.values()[select - 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivPrev.setImageDrawable(null);
-            break;
-        case 1:
-            ivItem.setImageResource(Material.values()[select].getId());
-            ivNext.startAnimation(au);
-            if(select+1 < Material.values().length) {
-                ivNext.setImageResource(Material.values()[select + 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivNext.setImageDrawable(null);
-            if(select-1 >= 0){
-                ivPrev.setImageResource(Material.values()[select - 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivPrev.setImageDrawable(null);
-            break;
-        case 2:
-            ivItem.setImageResource(Size.values()[select].getId());
-            ivNext.startAnimation(au);
-            if(select+1 < Size.values().length) {
-                ivNext.setImageResource(Size.values()[select + 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivNext.setImageDrawable(null);
-            if(select-1 >= 0){
-                ivPrev.setImageResource(Size.values()[select - 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivPrev.setImageDrawable(null);
-            break;
-        case 3:
-            ivItem.setImageResource(Special.values()[select].getId());
-            ivNext.startAnimation(au);
-            if(select+1 < Special.values().length) {
-                ivNext.setImageResource(Special.values()[select + 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivNext.setImageDrawable(null);
-            if(select-1 >= 0){
-                ivPrev.setImageResource(Special.values()[select - 1].getId());
-                ivNext.startAnimation(ad);
-            }
-            else
-                ivPrev.setImageDrawable(null);
-            break;
-        }
+        ivItem.setImageResource(getObject().getId());
+        if(select+1 < getLen())
+            ivNext.setImageResource(getObject(select + 1).getId());
+        else
+            ivNext.setImageDrawable(null);
+        if(select-1 >= 0)
+            ivPrev.setImageResource(getObject(select - 1).getId());
+        else
+            ivPrev.setImageDrawable(null);
     }
+
 	private void init(){
         ivItem = (ImageView) findViewById(R.id.ivItem);
         ivNext = (ImageView) findViewById(R.id.ivNextItem);
@@ -257,71 +131,78 @@ public class Store extends Activity implements OnClickListener {
 		ivBuy.setOnClickListener(this);
         Button equip = (Button) findViewById(R.id.bEquip);
         equip.setOnClickListener(this);
+        ivNext.setScaleX(.5f);
+        ivNext.setScaleY(.5f);
+        ivPrev.setScaleX(.5f);
+        ivPrev.setScaleY(.5f);
         moveImage();
 	}
 
     private void equip(){
-        switch(type){
-            case 0:
-                if(HomeScreen.getPlayer().hasItem(Engine.values()[select])) {
-                    HomeScreen.getPlayer().equip(Engine.values()[select]);
-                    HomeScreen.getPlane().setEngine(Engine.values()[select]);
-                }
-                else
-                    MessagePopup.displayMessage("Unable to equip", "You don't have this item!", Store.this);
-                break;
-            case 1:
-                if(HomeScreen.getPlayer().hasItem(Material.values()[select])) {
-                    HomeScreen.getPlayer().equip(Material.values()[select]);
-                    HomeScreen.getPlane().setMaterial(Material.values()[select]);
-                }
-                else
-                    MessagePopup.displayMessage("Unable to equip", "You don't have this item!", Store.this);
-                break;
-            case 2:
-                if(HomeScreen.getPlayer().hasItem(Size.values()[select])) {
-                    HomeScreen.getPlayer().equip(Size.values()[select]);
-                    HomeScreen.getPlane().setSize(Size.values()[select]);
-                }
-                else
-                    MessagePopup.displayMessage("Unable to equip", "You don't have this item!", Store.this);
-                break;
-            case 3:
-                //Do nothing for now. Needed support for specials
-                //HomeScreen.getPlayer().equip(Special.values()[select]);
-                break;
+        //Specials are currently unsupported
+        if(HomeScreen.getPlayer().hasItem(getObject(), getType())){
+            HomeScreen.getPlayer().equip(getObject(), getType());
+            HomeScreen.getPlane().set(getObject(), getType());
         }
     }
 
-	public int getPrice(){
-		switch(type){
-		default:
-			return 0;
-		case 0:
-			return Engine.values()[select].getPrice();
-		case 1:
-			return Material.values()[select].getPrice();
-		case 2:
-			return Size.values()[select].getPrice();
-		case 3:
-			return Special.values()[select].getPrice();
-		}
-	}
-	
-	public String getName(){
-		switch(type){
-		default:
-			return "Fail";
-		case 0:
-			return Engine.values()[select].getName();
-		case 1:
-			return Material.values()[select].getName();
-		case 2:
-			return Size.values()[select].getName();
-		case 3:
-			return Special.values()[select].getName();
-		}
-		
-	}
+    private GameObject getObject(){
+        switch(type){
+            case 0:
+                return Engine.values()[select].getObj();
+            case 1:
+                return Material.values()[select].getObj();
+            case 2:
+                return Size.values()[select].getObj();
+            case 3:
+                return Special.values()[select].getObj();
+            default:
+                return Engine.values()[0].getObj();
+        }
+    }
 
+    private GameObject getObject(int o){
+        switch(type){
+            case 0:
+                return Engine.values()[o].getObj();
+            case 1:
+                return Material.values()[o].getObj();
+            case 2:
+                return Size.values()[o].getObj();
+            case 3:
+                return Special.values()[o].getObj();
+            default:
+                return Engine.values()[0].getObj();
+        }
+    }
+
+    private int getLen(){
+        switch(type){
+            case 0:
+                return Engine.values().length;
+            case 1:
+                return Material.values().length;
+            case 2:
+                return Size.values().length;
+            case 3:
+                return Special.values().length;
+            default:
+                return 0;
+        }
+    }
+
+    private Objects.Types getType(){
+        switch(type){
+            case 0:
+                return Objects.Types.ENGINE;
+            case 1:
+                return Objects.Types.MATERIAL;
+            case 2:
+                return Objects.Types.SIZE;
+            case 3:
+                return Objects.Types.SPECIAL;
+            default:
+                return null;
+        }
+    }
 }

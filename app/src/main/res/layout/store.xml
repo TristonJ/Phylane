@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rlStore" >
+    android:id="@+id/rlStore"
+    android:background="@drawable/backgroundclouds">
 
     <TextView
         android:id="@+id/tvCurMoney"
@@ -50,9 +51,9 @@
         android:id="@+id/tvItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="TextView"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="TextView" />
+        android:layout_below="@+id/ivItem"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -63,28 +64,31 @@
         android:layout_centerHorizontal="true"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:id="@+id/ivItem"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:id="@+id/ivPrevItem"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="40dp"/>
+        android:layout_marginLeft="40dp"
+        android:alpha=".3"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:id="@+id/ivNextItem"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="40dp"/>
+        android:layout_marginRight="40dp"
+        android:alpha=".3"
+        android:adjustViewBounds="false"/>
 
 </RelativeLayout>

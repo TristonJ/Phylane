@@ -10,20 +10,25 @@ import android.util.Log;
 
 import com.lvadt.phylane.graphics.Sprite;
 import com.lvadt.phylane.model.Plane;
+import com.lvadt.phylane.model.WorldObject;
 
 public class Physics {
 	
-	List<Sprite> obj = new ArrayList<Sprite>();
+	List<Sprite> objSpr = new ArrayList<Sprite>();
+    List<WorldObject> objects = new ArrayList<WorldObject>();
     static double velScale = 7;         //What to scale the velocity down by
 	static double takeOffAngle = .191986;
 	static double gravity = 9.81;		//Gravity...
 	static double airResistance = .03;	//A constant for now, represented with a % of the forward force
 	static int lastScanned = 0;         //Records the last object needed to be checked for collision
 	
-	public void setObjects(List<Sprite> o){
+	public void setObjects(List<Sprite> o, List<WorldObject> wo){
 		for(int i = 0; i < o.size(); i++){
-			obj.add(o.get(i));
+			objSpr.add(o.get(i));
 		}
+        for(int i = 0; i < wo.size(); i++){
+            objects.add(wo.get(i));
+        }
 	}
 	//This enum will basically contain string values for fail takeoffs
 	public enum Fail{
@@ -80,24 +85,22 @@ public class Physics {
 		int pY = (int) plane.y;
 		
 		//Get objects for scan
-		for(int i = lastScanned; i < obj.size(); i++){
-			if(obj.get(i).x < plane.x - size.x/2){
+		for(int i = lastScanned; i < objects.size(); i++){
+			if(objects.get(i).x < plane.x - size.x/2){
 				lastScanned = i;
 			}
-			else if(obj.get(i).x < plane.x + size.x/2){
-				Rect o = new Rect();
-				o.left = (int) obj.get(i).x;
-				o.top = (int) obj.get(i).y;
-				o.right = (int) (obj.get(i).x + obj.get(i).width);
-				o.bottom = (int) (obj.get(i).y + obj.get(i).height);
+			else if(objects.get(i).x < plane.x + size.x/2){
+				Rect o = objects.get(i).bounds;
+
 				//Object seems to be intercepting
 				if(Rect.intersects(p, o)){
 					Rect cBounds = getCollisionBounds(p, o);
 					//Check pixels
 					for(int j = cBounds.left; j < cBounds.right; j++){
 						for(int z = cBounds.top; z < cBounds.bottom; z++){
-							int bmpPixel1 = obj.get(i).bmp.getPixel((int) (j-obj.get(i).x), (int) (z-obj.get(i).y));
-							int bmpPixel2 = pSprite.bmp.getPixel((int) (j-pX), (int) (z-pY));
+							int bmpPixel1 = objSpr.get(objects.get(i).ref).bmp.getPixel((int) (j-objects.get(i).x),
+                                    (int) (z-objects.get(i).y));
+							int bmpPixel2 = pSprite.bmp.getPixel((int)(j-pX),(int)(z-pY));
 							if(isFilled(bmpPixel1)){
 								if(isFilled(bmpPixel2)){
 									return true;
