@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 import com.lvadt.phylane.R;
+import com.lvadt.phylane.utils.Sound;
 
 //May eventually change to a OnTouchListener depending on how the menu
 //turns out
@@ -25,6 +26,8 @@ public class MainMenu extends Activity implements OnClickListener{
 		s.setOnClickListener(this);
 		o.setOnClickListener(this);
 		q.setOnClickListener(this);
+        Sound sPlayer = new Sound();
+        sPlayer.playMusic(MainMenu.this, R.raw.maintheme);
 	}
 
 	@Override
@@ -43,8 +46,6 @@ public class MainMenu extends Activity implements OnClickListener{
                 MainMenu.this.finish();
 			}
 			else{
-				//Later this should directly start the game where the
-				//User left off
 				StartGame();
 				MainMenu.this.finish();
 			}

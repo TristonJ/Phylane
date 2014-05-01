@@ -86,6 +86,7 @@ public class Fly extends Activity implements Runnable, OnTouchListener{
 
 		//The "to" object would normally be used
 		if(!fly){
+            MessagePopup.displayMessage("Take off Failure", "You were unable to take off", Fly.this);
 			Thread.currentThread().interrupt();
 			this.finish();
 		}

@@ -54,6 +54,7 @@ public class LoadScreen extends Activity implements Runnable{
     public void run() {
         synchronized(this){
             try {
+                //this.wait(3000);
                 Intent i = new Intent(LoadScreen.this, target);
                 //Loads aren't currently that long
                 startActivity(i);

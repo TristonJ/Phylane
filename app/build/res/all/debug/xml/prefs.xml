@@ -7,7 +7,7 @@
             android:title="Enable"
             android:defaultValue="true" />
     </PreferenceCategory>
-    
+
 
 </PreferenceScreen>
 <!-- From: file:/D:/Android%20Studio/Workspace/Phylane/app/src/main/res/xml/prefs.xml -->

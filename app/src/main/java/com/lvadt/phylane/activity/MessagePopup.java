@@ -1,7 +1,9 @@
 package com.lvadt.phylane.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +20,24 @@ public class MessagePopup extends Activity implements View.OnClickListener{
     static String Message;
     static String Title;
 
+    Msg mess;
+
+    public class Msg extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(Message)
+                    .setTitle(Title)
+                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            return builder.create();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +49,7 @@ public class MessagePopup extends Activity implements View.OnClickListener{
         rl.setOnClickListener(this);
         message.setText(Message);
         title.setText(Title);
+
     }
 
     public static void displayMessage(String title, String msg, Context c){

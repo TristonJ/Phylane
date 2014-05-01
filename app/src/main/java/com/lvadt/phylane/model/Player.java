@@ -22,20 +22,10 @@ public class Player{
 	private int money;
 	
 	//The players inventory of unlocked items
-	/*private List<Engine> engines = new ArrayList<Engine>();
-	private List<Material> materials = new ArrayList<Material>();
-	private List<Size> sizes = new ArrayList<Size>();
-	private List<Special> specials = new ArrayList<Special>();*/
-
     private List<GameObject> engines = new ArrayList<GameObject>();
     private List<GameObject> materials = new ArrayList<GameObject>();
     private List<GameObject> sizes = new ArrayList<GameObject>();
     private List<GameObject> specials = new ArrayList<GameObject>();
-
-    /*private Engine currentEngine;
-    private Material currentMaterial;
-    private Size currentSize;
-    private List<Special> currentSpecials = new ArrayList<Special>();*/
 
     private GameObject currentEngine;
     private GameObject currentMaterial;
@@ -54,11 +44,11 @@ public class Player{
 		PlaneName = pn;
 		money = startMoney;
 		currentMission = Objects.Missions.START;
-		engines.add(Engine.ONE.getObj());
+		engines.add(Engine.CHEAPPARTS.getObj());
 		materials.add(Material.WOOD.getObj());
 		sizes.add(Size.SMALL.getObj());
 		specials.add(Special.NONE.getObj());
-        currentEngine = Engine.ONE.getObj();
+        currentEngine = Engine.CHEAPPARTS.getObj();
         currentMaterial = Material.WOOD.getObj();
         currentSize = Size.SMALL.getObj();
         currentSpecials.add(Special.NONE.getObj());

@@ -64,7 +64,12 @@ public class Objects {
 	// Drawable)
 	// Power is in N, Weight in kg.
 	public enum Engine {
-		ONE(new GameObject("Engine One", 20.0, 650.0, 1, R.drawable.box));
+		CHEAPPARTS(new GameObject("Cheap Parts", 20.0, 650.0, 0, R.drawable.engines)),
+        NLHP2(new GameObject("NL HP 2", 30.0, 700.0, 20, R.drawable.engines)),
+        MODI3(new GameObject("MoD I III", 40.0, 800.0, 50, R.drawable.engines)),
+        YTE(new GameObject("YT E", 55.0, 925.0, 100, R.drawable.engines)),
+        R8000(new GameObject("R 8000", 70.0, 1050.0, 200, R.drawable.engines));
+
 
 		private GameObject obj;
 

@@ -160,7 +160,7 @@ public class Physics {
 	}
 	
 	//This method gets the planes weight as a double
-	public double getPlaneWeight(Plane plane){
+	public static double getPlaneWeight(Plane plane){
 		double weight = 0;
 		
 		//Engine weight + (Density*Volume*Gravity)
@@ -173,6 +173,19 @@ public class Physics {
 		plane.weight = weight;
 		return weight;
 	}
+
+    public static double getPlaneLift(Plane plane){
+        return plane.getEngine().getPower() * Math.sin(takeOffAngle);
+    }
+
+    public static double getPlaneThrust(Plane plane){
+        double thrust = 0;
+        thrust = (plane.getEngine().getPower() * Math.cos(takeOffAngle));
+        thrust -= (plane.thrust*airResistance);
+        if(thrust < 0)
+            return 0;
+        return thrust;
+    }
 	
 
 }

@@ -283,6 +283,26 @@
                 path="D:\Android Studio\Workspace\Phylane\app\src\main\res\xml\prefs.xml"
                 qualifiers=""
                 type="xml" />
+            <file
+                name="engines"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\engines.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="materials"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\materials.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="specials"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\specials.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="sizes"
+                path="D:\Android Studio\Workspace\Phylane\app\src\main\res\drawable-hdpi\sizes.png"
+                qualifiers="hdpi"
+                type="drawable" />
         </source>
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\rs\debug" />
         <source path="D:\Android Studio\Workspace\Phylane\app\build\res\generated\debug" />

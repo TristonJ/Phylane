@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundclouds">
 
-    <ImageButton
-        android:id="@+id/ibMissions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/ivMissions"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/missionsbutton" />
+        android:src="@drawable/missionsbutton"
+        android:layout_marginRight="5dp"/>
 
     <ImageButton
         android:id="@+id/ibTakeoff"
@@ -20,52 +21,15 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/takeoffbutton" />
 
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:id="@+id/ivEngine"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp"
-        android:focusable="false"/>
-
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:id="@+id/ivSpecial"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"/>
-
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:id="@+id/ivMaterial"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/ivEngine"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:id="@+id/ivSize"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/ivMaterial"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Engines"
         android:id="@+id/textView"
-        android:layout_above="@+id/ivEngine"
-        android:layout_alignLeft="@+id/ivEngine"
-        android:layout_alignStart="@+id/ivEngine"/>
+        android:layout_above="@+id/ivEngines"
+        android:layout_alignLeft="@+id/ivEngines"
+        android:layout_alignStart="@+id/ivEngines"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,9 +37,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Materials"
         android:id="@+id/textView2"
-        android:layout_above="@+id/ivMaterial"
-        android:layout_alignLeft="@+id/ivMaterial"
-        android:layout_alignStart="@+id/ivMaterial"/>
+        android:layout_above="@+id/ivMaterials"
+        android:layout_alignLeft="@+id/ivMaterials"
+        android:layout_alignStart="@+id/ivMaterials"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,10 +47,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Sizes"
         android:id="@+id/textView3"
-        android:layout_above="@+id/ivSize"
-        android:layout_alignLeft="@+id/ivSize"
-        android:layout_alignStart="@+id/ivSize"
-        android:singleLine="false"/>
+        android:singleLine="false"
+        android:layout_above="@+id/ivSizes"
+        android:layout_alignLeft="@+id/ivSizes"
+        android:layout_alignStart="@+id/ivSizes"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -94,8 +58,114 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Specials"
         android:id="@+id/textView4"
-        android:layout_above="@+id/ivSpecial"
-        android:layout_alignLeft="@+id/ivSpecial"
-        android:layout_alignStart="@+id/ivSpecial"/>
+        android:layout_above="@+id/ivSpecials"
+        android:layout_alignLeft="@+id/ivSpecials"
+        android:layout_alignStart="@+id/ivSpecials"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/ivEngines"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/ivMissions"
+        android:src="@drawable/engines"
+        android:layout_marginLeft="5dp"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/ivMaterials"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/ivEngines"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/materials"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/ivSizes"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/ivMaterials"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/sizes"
+        android:focusable="false"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/ivSpecials"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/ivSizes"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/specials"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivCurEngine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="1dp"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivCurMaterial"
+        android:layout_alignTop="@+id/ivCurEngine"
+        android:layout_toRightOf="@+id/ivCurEngine"
+        android:layout_marginLeft="20dp"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivCurSize"
+        android:layout_below="@+id/ivCurEngine"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivCurSpecial"
+        android:layout_alignTop="@+id/ivCurSize"
+        android:layout_toRightOf="@+id/ivCurSize"
+        android:focusable="false"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Lift: 0"
+        android:id="@+id/tvLift"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ivCurMaterial"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="1dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Weight: 0"
+        android:id="@+id/tvWeight"
+        android:layout_below="@+id/tvLift"
+        android:layout_alignLeft="@+id/tvLift"
+        android:layout_alignStart="@+id/tvLift"
+        android:singleLine="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Thrust: 0"
+        android:id="@+id/tvThrust"
+        android:layout_below="@+id/tvWeight"
+        android:layout_alignLeft="@+id/tvWeight"
+        android:layout_alignStart="@+id/tvWeight"/>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.lvadt.phylane.activity;
 
+import com.lvadt.phylane.physics.Physics;
 import com.lvadt.phylane.utils.Data;
 import com.lvadt.phylane.model.Objects.Engine;
 import com.lvadt.phylane.model.Objects.Material;
@@ -21,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 //This is the "HomeScreen" of the app.
 //The plane with the start button, customize, ext,
@@ -29,12 +31,16 @@ public class HomeScreen extends Activity implements OnClickListener{
 
 	//Layout stuff
 	//SurfaceView svMain;
-	ImageButton ibMissions;
+	ImageView ivMissions;
 	ImageButton ibStart;
     ImageView ivE;
     ImageView ivM;
     ImageView ivS;
     ImageView ivSP;
+    ImageView ivCE;
+    ImageView ivCM;
+    ImageView ivCS;
+    ImageView ivCSP;
 
     MediaPlayer mp = null;
 
@@ -63,21 +69,26 @@ public class HomeScreen extends Activity implements OnClickListener{
 
 		//Set up the layout stuff
 		//svMain = (SurfaceView) findViewById(R.id.svMain);
-		ibMissions = (ImageButton) findViewById(R.id.ibMissions);
+		ivMissions = (ImageView) findViewById(R.id.ivMissions);
 		ibStart = (ImageButton) findViewById(R.id.ibTakeoff);
 		//svMain.setOnTouchListener(this);
-		ibMissions.setOnClickListener(this);
+		ivMissions.setOnClickListener(this);
 		ibStart.setOnClickListener(this);
 
-        ivE = (ImageView) findViewById(R.id.ivEngine);
-        ivM = (ImageView) findViewById(R.id.ivMaterial);
-        ivS = (ImageView) findViewById(R.id.ivSize);
-        ivSP = (ImageView) findViewById(R.id.ivSpecial);
+        ivE = (ImageView) findViewById(R.id.ivEngines);
+        ivM = (ImageView) findViewById(R.id.ivMaterials);
+        ivS = (ImageView) findViewById(R.id.ivSizes);
+        ivSP = (ImageView) findViewById(R.id.ivSpecials);
 
-        ivE.setImageResource(player.getCurEngine().getId());
-        ivM.setImageResource(player.getCurMaterial().getId());
-        ivS.setImageResource(player.getCurSize().getId());
-        ivSP.setImageResource(player.getCurSpecials().get(0).getId());
+        ivCE = (ImageView) findViewById(R.id.ivCurEngine);
+        ivCM = (ImageView) findViewById(R.id.ivCurMaterial);
+        ivCS = (ImageView) findViewById(R.id.ivCurSize);
+        ivCSP = (ImageView) findViewById(R.id.ivCurSpecial);
+
+        ivCE.setImageResource(player.getCurEngine().getId());
+        ivCM.setImageResource(player.getCurMaterial().getId());
+        ivCS.setImageResource(player.getCurSize().getId());
+        ivCSP.setImageResource(player.getCurSpecials().get(0).getId());
 
         ivE.setOnClickListener(this);
         ivM.setOnClickListener(this);
@@ -88,19 +99,23 @@ public class HomeScreen extends Activity implements OnClickListener{
         ratioX = this.getResources().getDisplayMetrics().widthPixels / defX;
         ratioY = this.getResources().getDisplayMetrics().heightPixels / defY;
 
-        mp = MediaPlayer.create(this, R.raw.maintheme);
-        mp.setLooping(true);
-        mp.start();
-
+        Sound sPlayer = new Sound();
+        sPlayer.playMusic(this, R.raw.maintheme);
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-        ivE.setImageResource(player.getCurEngine().getId());
-        ivM.setImageResource(player.getCurMaterial().getId());
-        ivS.setImageResource(player.getCurSize().getId());
-        ivSP.setImageResource(player.getCurSpecials().get(0).getId());
+        TextView w = (TextView) findViewById(R.id.tvWeight);
+        w.setText("Weight: " + (int) Physics.getPlaneWeight(plane) + "N");
+        TextView l = (TextView) findViewById(R.id.tvLift);
+        l.setText("Lift: " + (int) Physics.getPlaneLift(plane) + "N");
+        TextView t = (TextView) findViewById(R.id.tvThrust);
+        t.setText("Thrust: " + (int) Physics.getPlaneThrust(plane) + "N");
+        ivCE.setImageResource(player.getCurEngine().getId());
+        ivCM.setImageResource(player.getCurMaterial().getId());
+        ivCS.setImageResource(player.getCurSize().getId());
+        ivCSP.setImageResource(player.getCurSpecials().get(0).getId());
 	}
 
 	@Override
@@ -126,7 +141,7 @@ public class HomeScreen extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()){
-		case R.id.ibMissions:
+		case R.id.ivMissions:
 			//Display Current mission
 			MessagePopup.displayMessage(player.getMission().title, player.getMission().description, this);
 			break;
@@ -137,22 +152,22 @@ public class HomeScreen extends Activity implements OnClickListener{
 			i.putExtra("class", "com.lvadt.phylane.activity.Fly");
 			startActivity(i);
             break;
-        case R.id.ivEngine:
+        case R.id.ivEngines:
             Intent e = new Intent(HomeScreen.this, Store.class);
             e.putExtra("type", 0);
             startActivity(e);
             break;
-        case R.id.ivMaterial:
+        case R.id.ivMaterials:
             Intent m = new Intent(HomeScreen.this, Store.class);
             m.putExtra("type", 1);
             startActivity(m);
 			break;
-        case R.id.ivSize:
+        case R.id.ivSizes:
             Intent s = new Intent(HomeScreen.this, Store.class);
             s.putExtra("type", 2);
             startActivity(s);
             break;
-        case R.id.ivSpecial:
+        case R.id.ivSpecials:
             Intent z = new Intent(HomeScreen.this, Store.class);
             z.putExtra("type", 3);
             startActivity(z);
