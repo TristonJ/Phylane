@@ -27,7 +27,11 @@ public class Data {
     //Save a byte as the line separator
     final static byte[] entr = System.getProperty("line.separator").getBytes();
 
-    //Save players data to file
+    /**
+     * Saves player data
+     * @param context the context
+     * @param player the player object to be saved
+     */
     static public void SavePlayer(Context context, Player player) {
         Log.i("Player", "Saving Data");
         FileOutputStream fos = null;
@@ -89,7 +93,11 @@ public class Data {
         }
     }
 
-    //Load players data from default file
+    /**
+     * Load the players data
+     * @param context the context
+     * @param player the player object which data will be loaded to
+     */
     static public void LoadPlayer(Context context, Player player){
         //Temporary data storage stuff
         String[] fileData = new String[fileLines];

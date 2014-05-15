@@ -21,7 +21,12 @@ public class Physics {
 	static double gravity = 9.81;		//Gravity...
 	static double airResistance = .03;	//A constant for now, represented with a % of the forward force
 	static int lastScanned = 0;         //Records the last object needed to be checked for collision
-	
+
+    /**
+     * Sets the objects for the physics engine
+     * @param o list of sprite objects
+     * @param wo a list of world objects
+     */
 	public void setObjects(List<Sprite> o, List<WorldObject> wo){
 		for(int i = 0; i < o.size(); i++){
 			objSpr.add(o.get(i));
@@ -30,7 +35,10 @@ public class Physics {
             objects.add(wo.get(i));
         }
 	}
-	//This enum will basically contain string values for fail takeoffs
+
+    /**
+     * An enum to contain return values for failed takeoffs
+     */
 	public enum Fail{
 		LIFT ("LIFT"),
 		THRUST ("TRUST");
@@ -40,9 +48,12 @@ public class Physics {
 			this.type = type;
 		}
 	}
-	
-	//Put this in its own thread WITH the draw. Call this first
-	//dt is the time since last update. Used to calculate velocity
+
+    /**
+     * Updates the plane and its flight
+     * @param plane the plane object
+     * @param dt the delta time
+     */
 	public void update(Plane plane, double dt){
 		
 		plane.lastX = plane.x;
@@ -71,7 +82,14 @@ public class Physics {
 			plane.y = 0;
 		}
 	}
-	
+
+    /**
+     * Tests for collision between the plane and another object
+     * @param size the screen size
+     * @param plane the plane object
+     * @param pSprite the sprite of the plane
+     * @return returns true if there is a collision
+     */
 	public boolean collision(Point size, Plane plane, Sprite pSprite){
 		if(plane.y > size.y){
 			return true;
@@ -113,7 +131,13 @@ public class Physics {
 		}
 		return false;
 	}
-	
+
+    /**
+     * Returns the bounds of colliding rects
+     * @param a rect a
+     * @param b rect b
+     * @return the new collision rect
+     */
 	private Rect getCollisionBounds(Rect a, Rect b){
 		int left = (int) Math.max(a.left, b.left);
 	    int top = (int) Math.max(a.top, b.top);
@@ -121,16 +145,26 @@ public class Physics {
 	    int bottom = (int) Math.min(a.bottom, b.bottom);
 	    return new Rect(left, top, right, bottom);
 	}
+
+    /**
+     * Tests if a pixel is transparent
+     * @param px the pixel
+     * @return true if it is transparent
+     */
 	private boolean isFilled(int px){
 		if(px != Color.TRANSPARENT)
 			return true;
 		else
 			return false;	
 	}
-	
-	
-	//This determines if the users plane will successfully take off
-	//ret[] is essentially a return value
+
+
+    /**
+     * Determines if the plane will be able to successfully takeoff
+     * @param plane The plane object
+     * @param ret a return value for any failed takeoffs
+     * @return true for a successful takeoff
+     */
 	public boolean TakeOff(Plane plane, String ret[]){
 		
 		plane.weight = getPlaneWeight(plane);
@@ -158,8 +192,12 @@ public class Physics {
 		
 		return true;
 	}
-	
-	//This method gets the planes weight as a double
+
+    /**
+     * Returns the plane weight as a double
+     * @param plane the plane object
+     * @return the planes weight
+     */
 	public static double getPlaneWeight(Plane plane){
 		double weight = 0;
 		
@@ -174,10 +212,20 @@ public class Physics {
 		return weight;
 	}
 
+    /**
+     * Returns the lift of the plane
+     * @param plane the plane object
+     * @return the lift
+     */
     public static double getPlaneLift(Plane plane){
         return plane.getEngine().getPower() * Math.sin(takeOffAngle);
     }
 
+    /**
+     * Returns the planes thrust
+     * @param plane the plane object
+     * @return the thrust
+     */
     public static double getPlaneThrust(Plane plane){
         double thrust = 0;
         thrust = (plane.getEngine().getPower() * Math.cos(takeOffAngle));

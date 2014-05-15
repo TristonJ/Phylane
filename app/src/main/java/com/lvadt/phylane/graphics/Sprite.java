@@ -34,7 +34,14 @@ public class Sprite {
 	public Boolean bRot = false;
 	public int texId;
 
-    //Initialize a new sprite class
+    /**
+     * Create a new sprite object
+     * @param c the context
+     * @param gl the GL10 object
+     * @param fileName the fie to be loaded
+     * @param posx its starting position x
+     * @param posy its starting position y
+     */
 	public Sprite(Context c, GL10 gl, String fileName, float posx, float posy){
         context = c;
 	    wRatio = c.getResources().getDisplayMetrics().widthPixels/defWidth;
@@ -43,20 +50,32 @@ public class Sprite {
 		x = posx;
 		y = posy;
 	}
-	
+
+    /**
+     * Sets the rotation of an object
+     * @param rotation the rotation
+     */
 	public void setRotation(float rotation){
 		rot = rotation;
 		bRot = true;
 	}
 
-    //Assign a texture id
+    /**
+     * Assigns an object a new texture id
+     * @param gl the GL10 object
+     * @return its new id
+     */
 	private int newTextureId(GL10 gl){
 		int[] temp = new int[1];
 		gl.glGenTextures(1, temp, 0);
 		return temp[0];
 	}
 
-    //Load the actual texture
+    /**
+     * Loads the sprites texture
+     * @param gl the GL10 object
+     * @param fileName the fie to be loaded
+     */
 	private void loadTexture(GL10 gl, String fileName){
 		texId = newTextureId(gl);
 		gl.glBindTexture(GL10.GL_TEXTURE_2D, texId);
@@ -103,14 +122,21 @@ public class Sprite {
 		gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_T, GL10.GL_REPEAT);
 	}
 
-    //Change its position
+    /**
+     * Sets the sprites position
+     * @param posx the new position x
+     * @param posy the new position y
+     */
 	public void setPos(float posx, float posy){
 		prevX = x;
 		x = posx;
 		y = posy;
 	}
-	
-	//Render by creating a "square" to display the bitmap on
+
+    /**
+     * Renders the sprite using a square
+     * @param gl the GL10 object
+     */
 	void render(GL10 gl){
 
         float ver[] = new float[12];
@@ -164,7 +190,10 @@ public class Sprite {
         gl.glDrawArrays(GL10.GL_TRIANGLES, 0, 6);
 		gl.glPopMatrix();
 	}
-	
+
+    /**
+     * Destroys the sprite object to make sure bitmaps get recycled properly
+     */
 	void destroy(){
 		//Recycle the bitmap
         tempbmp.recycle();

@@ -52,7 +52,16 @@ public class Level {
 	//Background image
 	public String background;
 	public String parallax = null;
-	
+
+    /**
+     * Creates a new randomized level
+     * @param size the screen size
+     * @param minObjects the minimum number of objects in the level
+     * @param maxObjects the maximum number of objects in the level
+     * @param Difficulty the desired difficulty
+     * @param maxHeight the maximum height of an object
+     * @return a new random level
+     */
 	public static Level RandomLevel(Point size, int minObjects, int maxObjects, int Difficulty, int maxHeight){
 		Random rand = new Random();
 		int numberObj = rand.nextInt((maxObjects - minObjects)+1) + minObjects;

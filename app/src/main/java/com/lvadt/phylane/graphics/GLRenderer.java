@@ -36,8 +36,13 @@ public class GLRenderer implements Renderer{
 	Sprite plane;
 	List<Sprite> objSprites = new ArrayList<Sprite>();
     List<WorldObject> objects = new ArrayList<WorldObject>();
-	
-	//Context, SurfaceView, Plane, Background, Objects
+
+    /**
+     * Creates a new GLRenderer object
+     * @param c the context
+     * @param sv the GLSurfaceView
+     * @param l the level to be drawn
+     */
 	public GLRenderer(Context c, GLSurfaceView sv, Level l){
 		context = c;
 		surfaceView = sv;
@@ -47,8 +52,11 @@ public class GLRenderer implements Renderer{
 	public Sprite getPlaneSprite(){
 		return plane;
 	}
-	
-	//Load New static sprite's
+
+    /**
+     * Loads all of the static world sprites
+     * @param gl the GL10 object
+     */
 	private void addSprite(GL10 gl){
         List<String> names = new ArrayList<String>();
 		for(int i = 0; i < level.filenames.length; i++){
@@ -73,7 +81,12 @@ public class GLRenderer implements Renderer{
             }
 		}
 	}
-	
+
+    /**
+     * When the surface is first created load all of the settings and sprites
+     * @param gl the GL10 object
+     * @param config the EGLConfigs
+     */
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		initGLSettings(gl, config);
@@ -89,7 +102,12 @@ public class GLRenderer implements Renderer{
 		drawMax = background.width*2;
 		drawMin = -background.width/2;
 	}
-	
+
+    /**
+     * When a frame is being drawn, draw everything in the world,
+     * move the parallax effect, and set all of the need view stuff for drawing
+     * @param gl the GL10 object
+     */
 	@Override
 	public void onDrawFrame(GL10 gl) {
 
@@ -145,6 +163,12 @@ public class GLRenderer implements Renderer{
 		plane.render(gl);
 	}
 
+    /**
+     * When the users screen is rotated or something similar
+     * @param gl the GL10 object
+     * @param width the new screen width
+     * @param height the new screen height
+     */
 	@Override
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
 		gl.glViewport(0, 0, width, height);
@@ -153,7 +177,13 @@ public class GLRenderer implements Renderer{
 		gl.glLoadIdentity();
 		gl.glFrustumf(-ratio, ratio, -1, 1, 1, 25);
 	}
-	
+
+    /**
+     * Is called when the object is first created. Loads all of the needed
+     * openGL settings
+     * @param gl the GL10 object
+     * @param config the EGLConfigs
+     */
 	private void initGLSettings(GL10 gl, EGLConfig config){
 		gl.glClearColor(0, 0, 0, 0);
 		
@@ -164,7 +194,10 @@ public class GLRenderer implements Renderer{
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST);
 	}
-	
+
+    /**
+     * Destroys this object to make sure sprites are properly disposed of
+     */
 	public void destroy(){
 		plane.destroy();
 		background.destroy();

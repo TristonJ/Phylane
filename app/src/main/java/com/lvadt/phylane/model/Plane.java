@@ -33,8 +33,13 @@ public class Plane{
 	public double angle = 11 * (Math.PI / 180); 		//In radians angle of flight
 	public double lift; 								//Planes actual upward force - its weight
 	public double weight;
-	
-	
+
+    /**
+     * Create a new plane object
+     * @param e its engine
+     * @param m its material
+     * @param s its size
+     */
 	public Plane(GameObject e, GameObject m, GameObject s){
 		engine = e;
 		material = m;
@@ -42,15 +47,20 @@ public class Plane{
 		//Just in case any specials are not defined
 		specials = new GameObject[]{Special.NONE.getObj()};
 	}
-	
+
 	public void setSprite(Sprite s){
 		sprite = s;
 	}
-	
+
 	public Sprite getSprite(){
 		return sprite;
 	}
 
+    /**
+     * "Equips" the specified object
+     * @param o the object
+     * @param t the objects type
+     */
     public void set(GameObject o, Objects.Types t){
         switch(t){
             case ENGINE:
@@ -64,6 +74,11 @@ public class Plane{
         }
     }
 
+    /**
+     * "Equips" an array of objects
+     * @param o the objects
+     * @param t their types
+     */
     public void set(GameObject o[], Objects.Types t[]){
         List<GameObject> sp = new ArrayList<GameObject>();
         for(int i = 0; i < t.length; i++){

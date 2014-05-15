@@ -31,14 +31,22 @@ public class Player{
     private GameObject currentMaterial;
     private GameObject currentSize;
     private List<GameObject> currentSpecials = new ArrayList<GameObject>();
-	
-	//Overloaded constructors for just loading a previous game
-	//and for starting a completely new one
+
+    /**
+     * Create a new player via loading
+     * @param context the context
+     */
 	public Player(Context context){
 		Data.LoadPlayer(context, this);
 	}
-	
-	//Create new player completely
+
+    /**
+     * Create a new player from scratch
+     * @param n the players name
+     * @param pn the planes name
+     * @param startMoney the starting amount of money
+     * @param context the context
+     */
 	public Player(String n, String pn, int startMoney, Context context){
 		Name = n;
 		PlaneName = pn;
@@ -57,7 +65,12 @@ public class Player{
 	}
 
 
-    //Get the type and index of the item that the user is trying to buy
+    /**
+     * Buys an item and adds it to players inventory
+     * @param o the item
+     * @param t its type
+     * @return false if purchase was unsuccessful
+     */
     public Boolean buy(GameObject o, Types t) {
         if(money < o.getPrice()){
             return false;
@@ -69,6 +82,11 @@ public class Player{
         }
     }
 
+    /**
+     * Adds an item to the players inventory
+     * @param o the item
+     * @param t its type
+     */
     public void addITem(GameObject o, Types t){
         switch(t){
             case ENGINE:
@@ -82,7 +100,11 @@ public class Player{
         }
     }
 
-    //Non specified type, takes longer to calculate
+    /**
+     * Checks if the player has a specific item. A little slow...
+     * @param o the item
+     * @return true if the player has the item
+     */
     public Boolean hasItem(GameObject o){
         for(int i = 0; i < engines.size(); i++){
             if(o.equals(engines.get(i)))
@@ -103,7 +125,12 @@ public class Player{
         return false;
     }
 
-    //Specifing type requires less computation
+    /**
+     * Checks if the player has a specific item. Faster
+     * @param o the item
+     * @param type its type
+     * @return true if the player has the item
+     */
     public Boolean hasItem(GameObject o, Types type) {
         switch (type) {
             case ENGINE:
@@ -133,8 +160,10 @@ public class Player{
         }
         return false;
     }
-	
-	//Moving the player to their next mission
+
+    /**
+     * Moves the player to their next mission
+     */
 	public void missionComplete(){
 		
 	}
@@ -189,7 +218,11 @@ public class Player{
 		return specials;
 	}
 
-    //Any valid type
+    /**
+     * Equips the specified item
+     * @param o the item
+     * @param t its type
+     */
     public void equip(GameObject o, Types t){
         switch(t){
             case ENGINE:
@@ -207,7 +240,10 @@ public class Player{
         }
     }
 
-    //For specials
+    /**
+     * Equips specials
+     * @param s the list of specials
+     */
     public void equip(List<Special> s){
         List<GameObject> t = new ArrayList<GameObject>();
         for(int i = 0; i < s.size(); i++){

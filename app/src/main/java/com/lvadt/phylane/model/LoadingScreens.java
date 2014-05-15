@@ -49,6 +49,10 @@ public class LoadingScreens {
                     "of lift depends on the wing shape.", Color.BLACK),
     };
 
+    /**
+     * Returns a random loading screen
+     * @return a new screen
+     */
     public static Screen randomLoadScreen(){
         Random rand = new Random();
         int s = rand.nextInt(screens.length);

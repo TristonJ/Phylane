@@ -32,6 +32,7 @@ public class Sound {
 
             return null;
         }
+
         @Override
         public void onCreate() {
             super.onCreate();
@@ -40,12 +41,25 @@ public class Sound {
             player.setVolume(50,50);
 
         }
+
+        /**
+         * Starts the playing of a sound
+         * @param intent the intent
+         * @param flags any flags
+         * @param startId start id
+         * @return always 1
+         */
         public int onStartCommand(Intent intent, int flags, int startId) {
             player.start();
             return 1;
         }
         }
 
+    /**
+     * Loads an array of sounds
+     * @param c the context
+     * @param files an array of sound files
+     */
     public void loadSounds(Context c, int files[]){
         sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
 
@@ -57,6 +71,10 @@ public class Sound {
         }
     }
 
+    /**
+     * Plays a sound from an already loaded file
+     * @param file the id of the file to be played
+     */
     public void playSound(int file){
         for(int i = 0; i < sFiles.length; i++) {
             if (sFiles[i] == file)
@@ -64,6 +82,11 @@ public class Sound {
         }
     }
 
+    /**
+     * Plays the sound of a file that is not loaded
+     * @param c the context
+     * @param file the sound file
+     */
     public void playSound(Context c, int file){
         sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         final int sound = sp.load(c, file, 1);
@@ -76,12 +99,20 @@ public class Sound {
         });
     }
 
+    /**
+     * Plays music
+     * @param c the context
+     * @param file the music file to be played
+     */
     public void playMusic(Context c, int file){
         Intent i = new Intent(c, BackgroundSoundService.class);
         resource = file;
         c.startService(i);
     }
 
+    /**
+     * Stops the playing of music
+     */
     public void stopMusic(){
 
     }

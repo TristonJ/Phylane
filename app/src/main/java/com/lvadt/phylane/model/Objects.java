@@ -59,7 +59,7 @@ public class Objects {
             minObj = averageObj-(dif*2);
 		}
 	}
-	
+
 	// List of all the Engines. Params are ("Name", Weight, Power, Price,
 	// Drawable)
 	// Power is in N, Weight in kg.

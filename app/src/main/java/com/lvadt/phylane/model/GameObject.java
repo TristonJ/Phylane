@@ -24,6 +24,7 @@ public class GameObject {
 		id = i;
 	}
 
+    //Material constructor
     GameObject(String n, double wvd, int p, int i, double str){
         name = n;
         weight = wvd;
